@@ -12,12 +12,6 @@ const journeyItems = [
   { date: '现在进行时', title: 'Vibe Coding', description: '把反复使用的方法整理成标准流程，再做成可以实际使用的 Skill 和网页。', tags: ['需求定义', '流程梳理', '产品落地'] },
 ]
 
-const photos = [
-  { alt: '窗边的黄色花束', className: 'photo-one' },
-  { alt: '日常阅读一角', className: 'photo-two' },
-  { alt: '傍晚的城市天空', className: 'photo-three' },
-]
-
 function Arrow({ down = false }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d={down ? 'M12 4v15m0 0 6-6m-6 6-6-6' : 'M5 12h14m-6-6 6 6-6 6'} /></svg>
 }
@@ -106,7 +100,7 @@ function Journey() {
 }
 
 function Life() {
-  return <section className="life section" id="life"><div className="life-top"><div><p className="section-kicker">LIFE LOG</p><h2>生活片段</h2></div><p>一些值得留存的光、路途与寻常日子。</p></div><div className="photo-strip">{photos.map((photo) => <div className={`photo ${photo.className}`} role="img" aria-label={photo.alt} key={photo.className} />)}</div></section>
+  return <section className="life" id="life"><div className="life-shell"><div className="life-heading"><p className="section-kicker">LIFE &amp; INTERESTS</p><h2>我的生活与爱好</h2><p>把鼠标放到文件夹上，看看工作之外的我。</p></div><div className="interest-wall"><figure className="interest interest-wellness"><img src="/assets/life-stickers/wellness.png" alt="抱着爱心的女孩贴纸" /><figcaption>保持热爱</figcaption></figure><figure className="interest interest-reading"><img src="/assets/life-stickers/reading.png" alt="阅读的女孩贴纸" /><figcaption>阅读输入中</figcaption></figure><figure className="interest interest-badminton"><img src="/assets/life-stickers/badminton.png" alt="打羽毛球的女孩贴纸" /><figcaption>挥拍一下</figcaption></figure><figure className="interest interest-swimming"><img src="/assets/life-stickers/swimming.png" alt="游泳的女孩贴纸" /><figcaption>自在游弋</figcaption></figure><figure className="interest interest-hiking"><img src="/assets/life-stickers/hiking.png" alt="爬山的女孩贴纸" /><figcaption>向山而行</figcaption></figure></div></div></section>
 }
 
 function About() {
