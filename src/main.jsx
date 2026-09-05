@@ -4,6 +4,14 @@ import './styles.css'
 
 const Markdown = lazy(() => import('react-markdown'))
 
+const journeyItems = [
+  { date: '2021.03 — 2023.06', title: '房企投资拓展', description: '参与项目前期分析与投资方案呈报。', tags: ['市场研究', '商业与投资判断', '跨部门沟通协调', '方案表达'] },
+  { date: '2022.03 — 2023.08', title: '留学工作室', description: '零投流，从自然获客到服务交付，实现20万+变现。', tags: ['低成本验证', '咨询式销售', '需求挖掘', '项目运营与交付'] },
+  { date: '2023.11 — 至今', title: 'AI硬件初创公司', description: '参与商业化方案、合作拓展与软硬件资源整合。', tags: ['商业化方案', '合作伙伴拓展', '软硬件资源整合', '产品内容表达'] },
+  { date: '2025.01 — 至今', title: 'AI自媒体创作', description: '把热点和AI工具亲自跑一遍，再讲成小白能理解、能跟着做的教程。', tags: ['把复杂问题讲简单', '选题判断', '教程制作', '多平台运营'] },
+  { date: '现在进行时', title: 'Vibe Coding', description: '把反复使用的方法整理成标准流程，再做成可以实际使用的 Skill 和网页。', tags: ['需求定义', '流程梳理', '产品落地'] },
+]
+
 const photos = [
   { alt: '窗边的黄色花束', className: 'photo-one' },
   { alt: '日常阅读一角', className: 'photo-two' },
@@ -17,7 +25,7 @@ function Arrow({ down = false }) {
 function Header() {
   return <header className="site-header">
     <a href="#top" className="brand" aria-label="苏敏的小站，返回首页"><span className="brand-mark">苏</span><span>苏敏的小站</span></a>
-    <nav aria-label="主导航"><a href="#top">首页</a><a href="#writing">文章</a><a href="#life">动态</a><a href="#about">关于</a></nav>
+    <nav aria-label="主导航"><a href="#top">首页</a><a href="#writing">文章</a><a href="#journey">经历</a><a href="#life">生活</a><a href="#life">动态</a><a href="#about">关于</a></nav>
     <a href="mailto:hello@example.com" className="contact-link">联系我</a>
   </header>
 }
@@ -90,6 +98,13 @@ function ArticleReader({ article, onClose }) {
   </div>
 }
 
+function Journey() {
+  return <section className="journey section" id="journey">
+    <div className="journey-intro"><p className="section-kicker">JOURNEY</p><h2>我的升级打怪之路</h2><p>不是一条预先规划好的路线。每走一段，我都把当时解决问题的方法留了下来。</p></div>
+    <ol className="journey-timeline">{journeyItems.map((item) => <li className="journey-item" key={item.title}><div className="journey-date">{item.date}</div><div className="journey-detail"><h3>{item.title}</h3><p>{item.description}</p><div className="journey-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></li>)}</ol>
+  </section>
+}
+
 function Life() {
   return <section className="life section" id="life"><div className="life-top"><div><p className="section-kicker">LIFE LOG</p><h2>生活片段</h2></div><p>一些值得留存的光、路途与寻常日子。</p></div><div className="photo-strip">{photos.map((photo) => <div className={`photo ${photo.className}`} role="img" aria-label={photo.alt} key={photo.className} />)}</div></section>
 }
@@ -107,7 +122,7 @@ function App() {
       .then(setArticles)
       .catch(() => setArticles([]))
   }, [])
-  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
+  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Journey /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
 }
 
 createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>)
