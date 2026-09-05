@@ -1,12 +1,8 @@
-import { StrictMode, useEffect, useRef, useState } from 'react'
+import { lazy, StrictMode, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
-const articles = [
-  { id: 'foreign-lawyer-paths', date: '2026.08.26', category: '涉外法律', title: '国内涉外律师行业现状及两种发展方向', excerpt: '从真实业务、入行门槛、案源逻辑与细分赛道，拆解涉外律师职业选择。', document: '/articles/foreign-lawyer-paths.docx' },
-  { id: 'ip-and-ai', date: '2026.08.18', category: '知识产权', title: '知识产权与人工智能', excerpt: 'AI 如何重构知识产权规则，并为涉外法律人才带来新的职业窗口。', document: '/articles/ip-and-ai.docx' },
-  { id: 'foreign-lawyer-upgrade', date: '2026.08.09', category: '职业思考', title: '涉外律师认知升级', excerpt: '从客户价值、产业理解与规则变化，重新审视涉外法律的核心能力。', document: '/articles/foreign-lawyer-upgrade.docx' },
-]
+const Markdown = lazy(() => import('react-markdown'))
 
 const photos = [
   { alt: '窗边的黄色花束', className: 'photo-one' },
@@ -29,7 +25,7 @@ function Header() {
 function Hero() {
   return <section className="hero" id="top">
     <div className="hero-copy">
-      <h1>我是苏敏，<br /><span>专注 <em>职场</em>+<em>个人成长</em>+<em>AI</em></span></h1>
+      <h1>我是苏敏<br /><span className="focus-line">专注 <em>职场</em> <b className="hero-separator">+</b> <em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></h1>
       <p className="hero-description">记录观察、思考与正在发生的生活。<br />愿每一次微小的积累，都有回响。</p>
       <div className="hero-actions">
         <a className="button button-dark" href="#writing">阅读文章 <Arrow /></a>
@@ -38,12 +34,12 @@ function Hero() {
     </div>
     <div className="hero-art" aria-label="戴着黄头巾、手捧 lifelong learning 书本的插画">
       <span className="sparkle sparkle-top">✦</span><span className="sparkle sparkle-side">✦</span>
-      <img src="/assets/sumin-reading.png" alt="苏敏阅读 lifelong learning 书本的插画" />
+      <img src="/assets/sumin-reading-cutout-clean.png" alt="苏敏阅读 lifelong learning 书本的插画" />
     </div>
   </section>
 }
 
-function Articles({ onOpen }) {
+function Articles({ articles, onOpen }) {
   return <section className="writing section" id="writing">
     <div className="section-heading"><div><p className="section-kicker">WRITING</p><h2>最新文章</h2></div><a href="#writing" className="text-link">查看全部 <Arrow /></a></div>
     <div className="article-list">
@@ -53,18 +49,25 @@ function Articles({ onOpen }) {
 }
 
 function ArticleReader({ article, onClose }) {
-  const contentRef = useRef(null)
+  const [markdown, setMarkdown] = useState('')
   const [status, setStatus] = useState('loading')
 
   useEffect(() => {
-    if (!article || !contentRef.current) return undefined
+    if (!article) return undefined
     let cancelled = false
-    const container = contentRef.current
-    container.replaceChildren()
+    setMarkdown('')
     setStatus('loading')
-    Promise.all([fetch(article.document).then((response) => response.arrayBuffer()), import('docx-preview')])
-      .then(([buffer, { renderAsync }]) => renderAsync(buffer, container, undefined, { inWrapper: false, ignoreWidth: true, ignoreHeight: true }))
-      .then(() => { if (!cancelled) setStatus('ready') })
+    fetch(article.content)
+      .then((response) => {
+        if (!response.ok) throw new Error('Article could not be loaded')
+        return response.text()
+      })
+      .then((text) => {
+        if (!cancelled) {
+          setMarkdown(text.replace(/^\s*#\s+[^\n]+\n+/, ''))
+          setStatus('ready')
+        }
+      })
       .catch(() => { if (!cancelled) setStatus('error') })
     return () => { cancelled = true }
   }, [article])
@@ -79,10 +82,10 @@ function ArticleReader({ article, onClose }) {
   return <div className="reader-overlay" role="dialog" aria-modal="true" aria-labelledby="article-title">
     <article className="reader-panel">
       <header className="reader-header"><div><p className="section-kicker">{article.category} · {article.date}</p><h2 id="article-title">{article.title}</h2></div><button className="reader-close" type="button" onClick={onClose} aria-label="关闭文章">×</button></header>
-      <div className="reader-actions"><a href={article.document} download>下载 Word 原文 <Arrow down /></a><button type="button" onClick={onClose}>返回文章列表 <Arrow /></button></div>
+      <div className="reader-actions"><button type="button" onClick={onClose}>返回文章列表 <Arrow /></button></div>
       {status === 'loading' && <p className="reader-status">正在载入全文…</p>}
-      {status === 'error' && <p className="reader-status">正文载入失败。你可以下载 Word 原文阅读。</p>}
-      <div className="reader-content" ref={contentRef} aria-busy={status === 'loading'} />
+      {status === 'error' && <p className="reader-status">正文载入失败，请稍后再试。</p>}
+      {status === 'ready' ? <div className="reader-content"><Suspense fallback={<p className="reader-status">正在排版正文…</p>}><Markdown>{markdown}</Markdown></Suspense></div> : null}
     </article>
   </div>
 }
@@ -96,8 +99,15 @@ function About() {
 }
 
 function App() {
+  const [articles, setArticles] = useState([])
   const [activeArticle, setActiveArticle] = useState(null)
-  return <><Header /><main><Hero /><Articles onOpen={setActiveArticle} /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle && <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} />}</>
+  useEffect(() => {
+    fetch('/articles/index.json')
+      .then((response) => response.ok ? response.json() : [])
+      .then(setArticles)
+      .catch(() => setArticles([]))
+  }, [])
+  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
 }
 
 createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>)

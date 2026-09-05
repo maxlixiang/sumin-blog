@@ -1,0 +1,26 @@
+[
+  {
+    "id": "foreign-lawyer-paths",
+    "date": "2026.08.26",
+    "category": "涉外法律",
+    "title": "国内涉外律师行业现状及两种发展方向",
+    "excerpt": "从真实业务、入行门槛、案源逻辑与细分赛道，拆解涉外律师职业选择。",
+    "content": "/articles/foreign-lawyer-paths.md"
+  },
+  {
+    "id": "ip-and-ai",
+    "date": "2026.08.18",
+    "category": "知识产权",
+    "title": "知识产权与人工智能",
+    "excerpt": "AI 如何重构知识产权规则，并为涉外法律人才带来新的职业窗口。",
+    "content": "/articles/ip-and-ai.md"
+  },
+  {
+    "id": "foreign-lawyer-upgrade",
+    "date": "2026.08.09",
+    "category": "职业思考",
+    "title": "涉外律师认知升级",
+    "excerpt": "从客户价值、产业理解与规则变化，重新审视涉外法律的核心能力。",
+    "content": "/articles/foreign-lawyer-upgrade.md"
+  }
+]
