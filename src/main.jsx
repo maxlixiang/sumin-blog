@@ -42,12 +42,12 @@ function Hero() {
 }
 
 function Articles({ articles, onOpen }) {
-  return <section className="writing section" id="writing">
+  return <section className="writing" id="writing"><div className="writing-inner section">
     <div className="section-heading"><div><p className="section-kicker">WRITING</p><h2>最新文章</h2></div><a href="#writing" className="text-link">查看全部 <Arrow /></a></div>
     <div className="article-list">
       {articles.map((article, index) => <button className="article" type="button" onClick={() => onOpen(article)} key={article.id}><span className="article-no">0{index + 1}</span><div className="article-meta"><time>{article.date}</time><span>{article.category}</span></div><div className="article-body"><h3>{article.title}</h3><p>{article.excerpt}</p></div><span className="round-arrow" aria-hidden="true"><Arrow /></span></button>)}
     </div>
-  </section>
+  </div></section>
 }
 
 function ArticleReader({ article, onClose }) {
@@ -93,10 +93,10 @@ function ArticleReader({ article, onClose }) {
 }
 
 function Journey() {
-  return <section className="journey section" id="journey">
+  return <section className="journey" id="journey"><div className="journey-inner section">
     <div className="journey-intro"><p className="section-kicker">JOURNEY</p><h2>我的升级打怪之路</h2><p>不是一条预先规划好的路线。每走一段，我都把当时解决问题的方法留了下来。</p></div>
     <ol className="journey-timeline">{journeyItems.map((item) => <li className="journey-item" key={item.title}><div className="journey-date">{item.date}</div><div className="journey-detail"><h3>{item.title}</h3><p>{item.description}</p><div className="journey-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></li>)}</ol>
-  </section>
+  </div></section>
 }
 
 function Life() {
