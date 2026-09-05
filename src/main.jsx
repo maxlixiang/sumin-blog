@@ -29,8 +29,7 @@ function Header() {
 function Hero() {
   return <section className="hero" id="top">
     <div className="hero-copy">
-      <p className="intro-line">你好，我是苏敏</p>
-      <h1>把日常写成<br /><em>长期主义</em></h1>
+      <h1>我是苏敏，<br /><span>专注 <em>职场</em>+<em>个人成长</em>+<em>AI</em></span></h1>
       <p className="hero-description">记录观察、思考与正在发生的生活。<br />愿每一次微小的积累，都有回响。</p>
       <div className="hero-actions">
         <a className="button button-dark" href="#writing">阅读文章 <Arrow /></a>
