@@ -39,7 +39,7 @@ function Hero() {
     </div>
     <div className="hero-art" aria-label="戴着黄头巾、手捧 lifelong learning 书本的插画">
       <span className="sparkle sparkle-top">✦</span><span className="sparkle sparkle-side">✦</span>
-      <img src="/assets/sumin-reading.png" alt="思敏阅读 lifelong learning 书本的插画" />
+      <img src="/assets/sumin-reading.png" alt="苏敏阅读 lifelong learning 书本的插画" />
     </div>
   </section>
 }
@@ -58,7 +58,7 @@ function Life() {
 }
 
 function About() {
-  return <section className="about section" id="about"><div><p className="section-kicker">ABOUT ME</p><h2>慢慢走，也认真记录。</h2></div><div className="about-copy"><p>我是思敏，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:hello@example.com" className="text-link">认识一下 <Arrow /></a></div></section>
+  return <section className="about section" id="about"><div><p className="section-kicker">ABOUT ME</p><h2>慢慢走，也认真记录。</h2></div><div className="about-copy"><p>我是苏敏，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:hello@example.com" className="text-link">认识一下 <Arrow /></a></div></section>
 }
 
 function App() { return <><Header /><main><Hero /><Articles /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer></> }
