@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './styles.css'
 
 const articles = [
-  { date: '2026.09.02', category: '行业观察', title: '当工具变得聪明，我们如何保留自己的判断？', excerpt: '关于 AI、工作流，以及人在快速变化中应当坚持的那一点点笨拙。' },
-  { date: '2026.08.21', category: '日记', title: '在九月抵达之前，先把夏天收好', excerpt: '几段散步、一本旧书和一些没有立刻说出口的心情。' },
-  { date: '2026.08.06', category: '职业成长', title: '把职业选择当作一场长期实验', excerpt: '不急着定义自己，先在真实的行动里积累答案。' },
+  { date: '2026.08.26', category: '涉外法律', title: '国内涉外律师行业现状及两种发展方向', excerpt: '从真实业务、入行门槛、案源逻辑与细分赛道，拆解涉外律师职业选择。' },
+  { date: '2026.08.18', category: '知识产权', title: '知识产权与人工智能', excerpt: 'AI 如何重构知识产权规则，并为涉外法律人才带来新的职业窗口。' },
+  { date: '2026.08.09', category: '职业思考', title: '涉外律师认知升级', excerpt: '从客户价值、产业理解与规则变化，重新审视涉外法律的核心能力。' },
 ]
 
 const photos = [
@@ -20,7 +20,7 @@ function Arrow({ down = false }) {
 
 function Header() {
   return <header className="site-header">
-    <a href="#top" className="brand" aria-label="思敏的笔记，返回首页"><span className="brand-mark">思</span><span>思敏的笔记</span></a>
+    <a href="#top" className="brand" aria-label="苏敏的小站，返回首页"><span className="brand-mark">苏</span><span>苏敏的小站</span></a>
     <nav aria-label="主导航"><a href="#top">首页</a><a href="#writing">文章</a><a href="#life">动态</a><a href="#about">关于</a></nav>
     <a href="mailto:hello@example.com" className="contact-link">联系我</a>
   </header>
@@ -61,6 +61,6 @@ function About() {
   return <section className="about section" id="about"><div><p className="section-kicker">ABOUT ME</p><h2>慢慢走，也认真记录。</h2></div><div className="about-copy"><p>我是思敏，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:hello@example.com" className="text-link">认识一下 <Arrow /></a></div></section>
 }
 
-function App() { return <><Header /><main><Hero /><Articles /><Life /><About /></main><footer>© {new Date().getFullYear()} 思敏的笔记 <span>Keep learning, keep growing.</span></footer></> }
+function App() { return <><Header /><main><Hero /><Articles /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer></> }
 
 createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>)
