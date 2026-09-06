@@ -18,8 +18,8 @@ function Arrow({ down = false }) {
 
 function Header() {
   return <header className="site-header">
-    <a href="#top" className="brand" aria-label="苏敏的小站，返回首页"><span className="brand-mark">苏</span><span>苏敏的小站</span></a>
-    <nav aria-label="主导航"><a href="#top">首页</a><a href="#writing">文章</a><a href="#journey">经历</a><a href="#life">生活</a><a href="#life">动态</a><a href="#about">关于</a></nav>
+    <a href="#top" className="brand" aria-label="大米的小站，返回首页"><span className="brand-mark"><img src="/assets/rice-bowl-icon.png" alt="" /></span><span>大米的小站</span></a>
+    <nav aria-label="主导航"><a href="#top">关于</a><a href="#writing">文章</a><a href="#journey">经历</a><a href="#life">生活</a></nav>
     <a href="mailto:hello@example.com" className="contact-link">联系我</a>
   </header>
 }
@@ -27,7 +27,7 @@ function Header() {
 function Hero() {
   return <section className="hero" id="top">
     <div className="hero-copy">
-      <h1>我是苏敏<br /><span className="focus-line">专注 <em>职场</em> <b className="hero-separator">+</b> <em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></h1>
+      <h1>我是大米<br /><span className="focus-line">专注 <em>职场</em> <b className="hero-separator">+</b> <em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></h1>
       <p className="hero-description">记录观察、思考与正在发生的生活。<br />愿每一次微小的积累，都有回响。</p>
       <div className="hero-actions">
         <a className="button button-dark" href="#writing">阅读文章 <Arrow /></a>
@@ -35,8 +35,7 @@ function Hero() {
       </div>
     </div>
     <div className="hero-art" aria-label="戴着黄头巾、手捧 lifelong learning 书本的插画">
-      <span className="sparkle sparkle-top">✦</span><span className="sparkle sparkle-side">✦</span>
-      <img src="/assets/sumin-reading-cutout-clean.png" alt="苏敏阅读 lifelong learning 书本的插画" />
+      <img src="/assets/sumin-reading-v2-cutout.png" alt="大米阅读 lifelong learning 书本的插画" />
     </div>
   </section>
 }
@@ -104,7 +103,7 @@ function Life() {
 }
 
 function About() {
-  return <section className="about section" id="about"><div><p className="section-kicker">ABOUT ME</p><h2>慢慢走，也认真记录。</h2></div><div className="about-copy"><p>我是苏敏，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:hello@example.com" className="text-link">认识一下 <Arrow /></a></div></section>
+  return <section className="about section" id="about"><div><p className="section-kicker">ABOUT ME</p><h2>慢慢走，也认真记录。</h2></div><div className="about-copy"><p>我是大米，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:hello@example.com" className="text-link">认识一下 <Arrow /></a></div></section>
 }
 
 function App() {
@@ -116,7 +115,7 @@ function App() {
       .then(setArticles)
       .catch(() => setArticles([]))
   }, [])
-  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Journey /><Life /><About /></main><footer>© {new Date().getFullYear()} 苏敏的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
+  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Journey /><Life /><About /></main><footer>© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
 }
 
 createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>)
