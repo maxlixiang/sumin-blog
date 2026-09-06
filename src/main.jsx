@@ -27,8 +27,8 @@ function Header() {
 function Hero() {
   return <section className="hero" id="top">
     <div className="hero-copy">
-      <h1>我是大米<br /><span className="focus-line">专注 <em>职场</em> <b className="hero-separator">+</b> <em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></h1>
-      <p className="hero-description">记录观察、思考与正在发生的生活。<br />愿每一次微小的积累，都有回响。</p>
+      <h1><span className="hero-name">我是大米</span><span className="focus-line">专注 <em>职场</em> <b className="hero-separator">+</b> <em>法律</em> <b className="hero-separator">+</b> <em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></h1>
+      <p className="hero-description">记录观察、思考与正在发生的生活。 <span>愿每一次微小的积累，都有回响。</span></p>
       <div className="hero-actions">
         <a className="button button-dark" href="#writing">阅读文章 <Arrow /></a>
         <a className="button button-light" href="#about">查看简历 <Arrow down /></a>
