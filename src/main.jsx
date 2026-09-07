@@ -1,6 +1,7 @@
 import { lazy, StrictMode, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
+import './footer.css'
 
 const Markdown = lazy(() => import('react-markdown'))
 
@@ -115,7 +116,7 @@ function App() {
       .then(setArticles)
       .catch(() => setArticles([]))
   }, [])
-  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Journey /><Life /><About /></main><footer>© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
+  return <><Header /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Journey /><Life /><About /></main><footer><div className="footer-inner">© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></div></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
 }
 
 createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>)

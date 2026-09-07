@@ -1,0 +1,4 @@
+@media (max-width:760px) {
+  footer { padding:0 20px; }
+  .footer-inner { padding:22px 0; flex-direction:column; gap:8px; }
+}
