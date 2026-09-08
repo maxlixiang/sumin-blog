@@ -1,4 +1,4 @@
-import { lazy, StrictMode, Suspense, useEffect, useState } from 'react'
+import { lazy, StrictMode, Suspense, useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 import './footer.css'
@@ -18,17 +18,28 @@ function Arrow({ down = false }) {
 }
 
 function Header() {
-  return <header className="site-header">
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const closeOnEscape = (event) => { if (event.key === 'Escape') setMenuOpen(false) }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
+  const closeMenu = () => setMenuOpen(false)
+
+  return <header className={`site-header${menuOpen ? ' menu-open' : ''}`}>
     <a href="#top" className="brand" aria-label="大米的小站，返回首页"><span className="brand-mark"><img src="/assets/rice-bowl-icon.png" alt="" /></span><span>大米的小站</span></a>
-    <nav aria-label="主导航"><a href="#top">关于</a><a href="#writing">文章</a><a href="#journey">经历</a><a href="#life">生活</a></nav>
+    <nav className="site-nav" id="site-nav" aria-label="主导航"><a href="#top" onClick={closeMenu}>关于</a><a href="#writing" onClick={closeMenu}>文章</a><a href="#journey" onClick={closeMenu}>经历</a><a href="#life" onClick={closeMenu}>生活</a><a href="mailto:hello@example.com" className="mobile-contact" onClick={closeMenu}>联系我</a></nav>
     <a href="mailto:hello@example.com" className="contact-link">联系我</a>
+    <button className="menu-toggle" type="button" aria-controls="site-nav" aria-expanded={menuOpen} aria-label={menuOpen ? '关闭导航' : '打开导航'} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
   </header>
 }
 
 function Hero() {
   return <section className="hero" id="top">
     <div className="hero-copy">
-      <h1><span className="hero-name">我是大米</span><span className="focus-line">专注 <em>职场</em> <b className="hero-separator">+</b> <em>法律</em> <b className="hero-separator">+</b> <em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></h1>
+      <h1><span className="hero-name">我是大米</span><span className="focus-line"><span className="focus-row">专注 <em>职场</em> <b className="hero-separator">+</b> <em>法律</em> <b className="hero-separator">+</b></span><span className="focus-row"><em>个人成长</em> <b className="hero-separator">+</b> <em>AI</em></span></span></h1>
       <p className="hero-description">记录观察、思考与正在发生的生活。 <span>愿每一次微小的积累，都有回响。</span></p>
       <div className="hero-actions">
         <a className="button button-dark" href="#writing">阅读文章 <Arrow /></a>
@@ -53,6 +64,7 @@ function Articles({ articles, onOpen }) {
 function ArticleReader({ article, onClose }) {
   const [markdown, setMarkdown] = useState('')
   const [status, setStatus] = useState('loading')
+  const closeButtonRef = useRef(null)
 
   useEffect(() => {
     if (!article) return undefined
@@ -76,14 +88,20 @@ function ArticleReader({ article, onClose }) {
 
   useEffect(() => {
     const closeOnEscape = (event) => { if (event.key === 'Escape') onClose() }
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
     window.addEventListener('keydown', closeOnEscape)
-    return () => window.removeEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
   }, [onClose])
 
   if (!article) return null
   return <div className="reader-overlay" role="dialog" aria-modal="true" aria-labelledby="article-title">
     <article className="reader-panel">
-      <header className="reader-header"><div><p className="section-kicker">{article.category} · {article.date}</p><h2 id="article-title">{article.title}</h2></div><button className="reader-close" type="button" onClick={onClose} aria-label="关闭文章">×</button></header>
+      <header className="reader-header"><div><p className="section-kicker">{article.category} · {article.date}</p><h2 id="article-title">{article.title}</h2></div><button ref={closeButtonRef} className="reader-close" type="button" onClick={onClose} aria-label="关闭文章">×</button></header>
       <div className="reader-actions"><button type="button" onClick={onClose}>返回文章列表 <Arrow /></button></div>
       {status === 'loading' && <p className="reader-status">正在载入全文…</p>}
       {status === 'error' && <p className="reader-status">正文载入失败，请稍后再试。</p>}
