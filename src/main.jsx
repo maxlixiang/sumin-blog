@@ -137,8 +137,8 @@ function Header({ activeSection, onNavigate }) {
 
   return <header className={`site-header${menuOpen ? ' menu-open' : ''}`}>
     <a href="#top" className="brand" aria-label="大米的小站，返回首页" onClick={() => navigate('about')}><span className="brand-mark"><img src="/assets/rice-bowl-icon.png" alt="" /></span><span>大米的小站</span></a>
-    <nav className="site-nav" id="site-nav" aria-label="主导航"><a href="#top" className={activeSection === 'about' ? 'is-active' : ''} aria-current={activeSection === 'about' ? 'location' : undefined} onClick={() => navigate('about')}>关于</a><a href="#writing" className={activeSection === 'writing' ? 'is-active' : ''} aria-current={activeSection === 'writing' ? 'location' : undefined} onClick={() => navigate('writing')}>文章</a><a href="#journey" className={activeSection === 'journey' ? 'is-active' : ''} aria-current={activeSection === 'journey' ? 'location' : undefined} onClick={() => navigate('journey')}>经历</a><a href="#life" className={activeSection === 'life' ? 'is-active' : ''} aria-current={activeSection === 'life' ? 'location' : undefined} onClick={() => navigate('life')}>生活</a><a href="mailto:hello@example.com" className="mobile-contact" onClick={() => setMenuOpen(false)}>联系我</a></nav>
-    <a href="mailto:hello@example.com" className="contact-link">联系我</a>
+    <nav className="site-nav" id="site-nav" aria-label="主导航"><a href="#top" className={activeSection === 'about' ? 'is-active' : ''} aria-current={activeSection === 'about' ? 'location' : undefined} onClick={() => navigate('about')}>关于</a><a href="#writing" className={activeSection === 'writing' ? 'is-active' : ''} aria-current={activeSection === 'writing' ? 'location' : undefined} onClick={() => navigate('writing')}>文章</a><a href="#journey" className={activeSection === 'journey' ? 'is-active' : ''} aria-current={activeSection === 'journey' ? 'location' : undefined} onClick={() => navigate('journey')}>经历</a><a href="#life" className={activeSection === 'life' ? 'is-active' : ''} aria-current={activeSection === 'life' ? 'location' : undefined} onClick={() => navigate('life')}>生活</a><a href="mailto:15829728239@163.com" className="mobile-contact" onClick={() => setMenuOpen(false)}>联系我</a></nav>
+    <a href="mailto:15829728239@163.com" className="contact-link">联系我</a>
     <button className="menu-toggle" type="button" aria-controls="site-nav" aria-expanded={menuOpen} aria-label={menuOpen ? '关闭导航' : '打开导航'} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
   </header>
 }
@@ -229,7 +229,7 @@ function Life() {
 }
 
 function About() {
-  return <section className="about section" id="about"><div className="about-copy" data-reveal><p>我是大米，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:hello@example.com" className="text-link">认识一下 <Arrow /></a></div></section>
+  return <section className="about section" id="about"><div className="about-copy" data-reveal><p>我是大米，一名持续学习、持续书写的人。这里收纳我的行业观察、生活手记，以及关于工作的长期思考。</p><a href="mailto:15829728239@163.com" className="text-link">认识一下 <Arrow /></a></div></section>
 }
 
 function App() {
