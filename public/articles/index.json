@@ -1,5 +1,13 @@
 [
   {
+    "id": "stanford-legal-engineering",
+    "date": "2026.09.21",
+    "category": "人工智能",
+    "title": "从斯坦福法律工程项目，看 AI 时代律师的三种角色",
+    "excerpt": "从个人使用 AI 到团队工作流与组织治理，理解法律工程带来的新角色。",
+    "content": "/articles/stanford-legal-engineering.md"
+  },
+  {
     "id": "ai-change-and-perspective",
     "date": "2026.09.19",
     "category": "人工智能",
