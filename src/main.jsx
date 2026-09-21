@@ -1,9 +1,51 @@
-import { lazy, StrictMode, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, StrictMode, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 import './footer.css'
 
 const Markdown = lazy(() => import('react-markdown'))
+
+function readRoute() {
+  if (window.location.pathname === '/articles') return { name: 'archive' }
+  const match = window.location.pathname.match(/^\/articles\/([^/]+)\/?$/)
+  if (!match) return { name: 'home' }
+  try {
+    return { name: 'article', articleId: decodeURIComponent(match[1]) }
+  } catch {
+    return { name: 'not-found' }
+  }
+}
+
+function navigateTo(path) {
+  window.history.pushState({}, '', path)
+  window.dispatchEvent(new Event('app:navigate'))
+}
+
+function AppLink({ href, children, ...props }) {
+  const handleClick = (event) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    event.preventDefault()
+    navigateTo(href)
+  }
+
+  return <a href={href} onClick={handleClick} {...props}>{children}</a>
+}
+
+function useRoute() {
+  const [route, setRoute] = useState(readRoute)
+
+  useEffect(() => {
+    const syncRoute = () => setRoute(readRoute())
+    window.addEventListener('popstate', syncRoute)
+    window.addEventListener('app:navigate', syncRoute)
+    return () => {
+      window.removeEventListener('popstate', syncRoute)
+      window.removeEventListener('app:navigate', syncRoute)
+    }
+  }, [])
+
+  return route
+}
 
 const journeyItems = [
   { date: '2014.09 — 2018.07', title: '法学与计算机双学位', description: '在西北大学完成法学与计算机科学双学位，建立规则理解与技术思维的双重基础。', tags: ['法学基础', '计算机科学', '跨学科思维', '模拟法庭'] },
@@ -25,7 +67,7 @@ const navSections = [
   { id: 'about', navKey: 'about' },
 ]
 
-function useScrollSpy() {
+function useScrollSpy(pageKey) {
   const [activeSection, setActiveSection] = useState(() => {
     const hashId = window.location.hash.slice(1)
     return navSections.find(({ id }) => id === hashId)?.navKey ?? 'about'
@@ -72,12 +114,12 @@ function useScrollSpy() {
       observer.disconnect()
       window.removeEventListener('hashchange', syncHash)
     }
-  }, [])
+  }, [pageKey])
 
   return [activeSection, setActiveSection]
 }
 
-function useSectionReveal() {
+function useSectionReveal(pageKey) {
   useEffect(() => {
     const elements = [...document.querySelectorAll('[data-reveal]')]
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -118,10 +160,10 @@ function useSectionReveal() {
       window.removeEventListener('scroll', queueReveal)
       if (frameId) window.cancelAnimationFrame(frameId)
     }
-  }, [])
+  }, [pageKey])
 }
 
-function Header({ activeSection, onNavigate }) {
+function Header({ activeSection, onNavigate, innerPage = false }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -135,9 +177,11 @@ function Header({ activeSection, onNavigate }) {
     setMenuOpen(false)
   }
 
+  const homeHref = (hash) => innerPage ? `/${hash}` : hash
+
   return <header className={`site-header${menuOpen ? ' menu-open' : ''}`}>
-    <a href="#top" className="brand" aria-label="大米的小站，返回首页" onClick={() => navigate('about')}><span className="brand-mark"><img src="/assets/rice-bowl-icon.png" alt="" /></span><span>大米的小站</span></a>
-    <nav className="site-nav" id="site-nav" aria-label="主导航"><a href="#top" className={activeSection === 'about' ? 'is-active' : ''} aria-current={activeSection === 'about' ? 'location' : undefined} onClick={() => navigate('about')}>关于</a><a href="#writing" className={activeSection === 'writing' ? 'is-active' : ''} aria-current={activeSection === 'writing' ? 'location' : undefined} onClick={() => navigate('writing')}>文章</a><a href="#journey" className={activeSection === 'journey' ? 'is-active' : ''} aria-current={activeSection === 'journey' ? 'location' : undefined} onClick={() => navigate('journey')}>经历</a><a href="#life" className={activeSection === 'life' ? 'is-active' : ''} aria-current={activeSection === 'life' ? 'location' : undefined} onClick={() => navigate('life')}>生活</a><a href="mailto:15829728239@163.com" className="mobile-contact" onClick={() => setMenuOpen(false)}>联系我</a></nav>
+    <a href={homeHref('#top')} className="brand" aria-label="大米的小站，返回首页" onClick={() => navigate('about')}><span className="brand-mark"><img src="/assets/rice-bowl-icon.png" alt="" /></span><span>大米的小站</span></a>
+    <nav className="site-nav" id="site-nav" aria-label="主导航"><a href={homeHref('#top')} className={activeSection === 'about' ? 'is-active' : ''} aria-current={activeSection === 'about' ? 'location' : undefined} onClick={() => navigate('about')}>关于</a><a href={innerPage ? '/articles' : '#writing'} className={activeSection === 'writing' ? 'is-active' : ''} aria-current={activeSection === 'writing' ? 'page' : undefined} onClick={() => navigate('writing')}>文章</a><a href={homeHref('#journey')} className={activeSection === 'journey' ? 'is-active' : ''} aria-current={activeSection === 'journey' ? 'location' : undefined} onClick={() => navigate('journey')}>经历</a><a href={homeHref('#life')} className={activeSection === 'life' ? 'is-active' : ''} aria-current={activeSection === 'life' ? 'location' : undefined} onClick={() => navigate('life')}>生活</a><a href="mailto:15829728239@163.com" className="mobile-contact" onClick={() => setMenuOpen(false)}>联系我</a></nav>
     <a href="mailto:15829728239@163.com" className="contact-link">联系我</a>
     <button className="menu-toggle" type="button" aria-controls="site-nav" aria-expanded={menuOpen} aria-label={menuOpen ? '关闭导航' : '打开导航'} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
   </header>
@@ -159,22 +203,32 @@ function Hero() {
   </section>
 }
 
-function Articles({ articles, onOpen }) {
+function ArticleList({ articles }) {
+  return <div className="article-list">
+    {articles.map((article, index) => <AppLink className="article" href={`/articles/${encodeURIComponent(article.id)}`} key={article.id}><span className="article-no">{String(index + 1).padStart(2, '0')}</span><div className="article-meta"><time>{article.date}</time><span>{article.category}</span></div><div className="article-body"><h3>{article.title}</h3><p>{article.excerpt}</p></div><span className="round-arrow" aria-hidden="true"><Arrow /></span></AppLink>)}
+  </div>
+}
+
+function Articles({ articles }) {
   return <section className="writing" id="writing"><div className="writing-inner section" data-reveal>
-    <div className="section-heading"><div><p className="section-kicker">WRITING</p><h2>最新文章</h2></div><a href="#writing" className="text-link">查看全部 <Arrow /></a></div>
-    <div className="article-list">
-      {articles.map((article, index) => <button className="article" type="button" onClick={() => onOpen(article)} key={article.id}><span className="article-no">0{index + 1}</span><div className="article-meta"><time>{article.date}</time><span>{article.category}</span></div><div className="article-body"><h3>{article.title}</h3><p>{article.excerpt}</p></div><span className="round-arrow" aria-hidden="true"><Arrow /></span></button>)}
-    </div>
+    <div className="section-heading"><div><p className="section-kicker">WRITING</p><h2>最新文章</h2></div><AppLink href="/articles" className="text-link">查看全部 <Arrow /></AppLink></div>
+    <ArticleList articles={articles.slice(0, 3)} />
   </div></section>
 }
 
-function ArticleReader({ article, onClose }) {
+function ArticleArchive({ articles }) {
+  return <main className="archive-page"><section className="archive-shell section">
+    <div className="archive-heading"><AppLink href="/#writing" className="back-link"><Arrow /> 返回首页</AppLink><p className="section-kicker">ARCHIVE</p><h1>全部文章</h1><p>按时间收纳写下的行业观察、职业思考和学习记录。</p></div>
+    <ArticleList articles={articles} />
+  </section></main>
+}
+
+function ArticlePage({ article, articles }) {
   const [markdown, setMarkdown] = useState('')
   const [status, setStatus] = useState('loading')
-  const closeButtonRef = useRef(null)
 
   useEffect(() => {
-    if (!article) return undefined
+    if (!article) return
     let cancelled = false
     setMarkdown('')
     setStatus('loading')
@@ -193,28 +247,26 @@ function ArticleReader({ article, onClose }) {
     return () => { cancelled = true }
   }, [article])
 
-  useEffect(() => {
-    const closeOnEscape = (event) => { if (event.key === 'Escape') onClose() }
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    closeButtonRef.current?.focus()
-    window.addEventListener('keydown', closeOnEscape)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', closeOnEscape)
-    }
-  }, [onClose])
+  if (!article) return <NotFoundPage />
+  const index = articles.findIndex(({ id }) => id === article.id)
+  const previousArticle = index > 0 ? articles[index - 1] : null
+  const nextArticle = index >= 0 && index < articles.length - 1 ? articles[index + 1] : null
 
-  if (!article) return null
-  return <div className="reader-overlay" role="dialog" aria-modal="true" aria-labelledby="article-title">
-    <article className="reader-panel">
-      <header className="reader-header"><div><p className="section-kicker">{article.category} · {article.date}</p><h2 id="article-title">{article.title}</h2></div><button ref={closeButtonRef} className="reader-close" type="button" onClick={onClose} aria-label="关闭文章">×</button></header>
-      <div className="reader-actions"><button type="button" onClick={onClose}>返回文章列表 <Arrow /></button></div>
+  return <main className="article-page"><article className="reader-panel" aria-labelledby="article-title">
+      <AppLink href="/articles" className="back-link"><Arrow /> 返回文章列表</AppLink>
+      <header className="reader-header"><p className="section-kicker">{article.category} · {article.date}</p><h1 id="article-title">{article.title}</h1></header>
       {status === 'loading' && <p className="reader-status">正在载入全文…</p>}
       {status === 'error' && <p className="reader-status">正文载入失败，请稍后再试。</p>}
       {status === 'ready' ? <div className="reader-content"><Suspense fallback={<p className="reader-status">正在排版正文…</p>}><Markdown>{markdown}</Markdown></Suspense></div> : null}
-    </article>
-  </div>
+      <nav className="article-pagination" aria-label="文章翻页">
+        {previousArticle ? <AppLink href={`/articles/${encodeURIComponent(previousArticle.id)}`}><span>上一篇</span><strong>{previousArticle.title}</strong></AppLink> : <span />}
+        {nextArticle ? <AppLink href={`/articles/${encodeURIComponent(nextArticle.id)}`}><span>下一篇</span><strong>{nextArticle.title}</strong></AppLink> : <span />}
+      </nav>
+    </article></main>
+}
+
+function NotFoundPage() {
+  return <main className="not-found-page"><div><p className="section-kicker">404</p><h1>没有找到这篇文章</h1><p>文章可能已经调整了地址，回到文章列表继续看看吧。</p><AppLink className="button button-dark" href="/articles">查看全部文章 <Arrow /></AppLink></div></main>
 }
 
 function Journey() {
@@ -234,16 +286,33 @@ function About() {
 
 function App() {
   const [articles, setArticles] = useState([])
-  const [activeArticle, setActiveArticle] = useState(null)
-  const [activeSection, setActiveSection] = useScrollSpy()
-  useSectionReveal()
+  const route = useRoute()
+  const [activeSection, setActiveSection] = useScrollSpy(route.name)
+  useSectionReveal(route.name)
   useEffect(() => {
     fetch('/articles/index.json')
       .then((response) => response.ok ? response.json() : [])
       .then(setArticles)
       .catch(() => setArticles([]))
   }, [])
-  return <><Header activeSection={activeSection} onNavigate={setActiveSection} /><main><Hero /><Articles articles={articles} onOpen={setActiveArticle} /><Journey /><Life /><About /></main><footer><div className="footer-inner">© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></div></footer>{activeArticle ? <ArticleReader article={activeArticle} onClose={() => setActiveArticle(null)} /> : null}</>
+
+  const activeArticle = route.name === 'article' ? articles.find(({ id }) => id === route.articleId) : null
+  useEffect(() => {
+    const pageTitle = activeArticle?.title ?? (route.name === 'archive' ? '全部文章' : route.name === 'not-found' ? '页面未找到' : '')
+    document.title = pageTitle ? `${pageTitle}｜大米的小站` : '大米的小站'
+    if (route.name !== 'home') {
+      window.scrollTo(0, 0)
+      return
+    }
+    const hashId = window.location.hash.slice(1) || 'top'
+    window.requestAnimationFrame(() => document.getElementById(hashId)?.scrollIntoView())
+  }, [activeArticle, route.name])
+
+  const footer = <footer><div className="footer-inner">© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></div></footer>
+  if (route.name === 'archive') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage /><ArticleArchive articles={articles} />{footer}</>
+  if (route.name === 'article') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage />{articles.length > 0 ? <ArticlePage article={activeArticle} articles={articles} /> : <main className="article-page"><p className="reader-status">正在载入文章…</p></main>}{footer}</>
+  if (route.name === 'not-found') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage /><NotFoundPage />{footer}</>
+  return <><Header activeSection={activeSection} onNavigate={setActiveSection} /><main><Hero /><Articles articles={articles} /><Journey /><Life /><About /></main>{footer}</>
 }
 
 createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>)

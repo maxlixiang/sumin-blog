@@ -27,4 +27,6 @@ Vercel 可自动识别 Vite 项目并使用 `npm run build` 构建。
 2. 在 `public/articles/index.json` 顶部添加一条文章信息，填写 `id`、`date`、`category`、`title`、`excerpt` 和 `content`。其中 `content` 填写 `/articles/my-new-article.md`。
 3. 提交并推送到 GitHub；Vercel 会自动发布。
 
+首页会展示最新 3 篇文章，“查看全部”进入 `/articles`；每篇文章的 `id` 会生成独立地址，例如 `/articles/my-new-article`。
+
 正文可以用 `# 标题` 开头，但网站阅读页已经显示文章标题，因此该一级标题不会重复显示。
