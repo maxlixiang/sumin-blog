@@ -35,6 +35,9 @@ type ResponsibilityLevelHistoryRow = {
   change_explanation: string; effective_on: string; created_at: string;
 };
 type CapabilityLevelDefinitionRow = { id: string; model_version_id: string; capability_id: string; level: number; name: string; summary: string; standard: string; promotion_statement: string; reviewer_perspective: string; display_order: number; created_at: string };
+type MilestoneDefinitionRow = { id: string; capability_level_definition_id: string; code: string; title: string; description: string; completion_criteria: string; evidence_hint: string; display_order: number; is_active: boolean; created_at: string };
+type UserMilestoneProgressRow = { id: string; user_id: string; milestone_definition_id: string; status: "not_started" | "in_progress" | "completed"; completion_note: string; supporting_evidence_id: string | null; development_project_id: string | null; completed_at: string | null; created_at: string; updated_at: string };
+type DevelopmentProjectRow = { id: string; user_id: string; title: string; project_type: string; status: "planned" | "active" | "on_hold" | "completed" | "archived"; objective: string; context: string; target_date: string | null; completed_on: string | null; external_url: string | null; created_at: string; updated_at: string };
 type JoinRow<T extends string> = {
   user_id: string; capability_id: string; created_at: string;
 } & Record<T, string>;
@@ -108,6 +111,36 @@ export interface Database {
         Update: never;
         Relationships: [];
       };
+      milestone_definitions: {
+        Row: MilestoneDefinitionRow;
+        Insert: Omit<MilestoneDefinitionRow, "id" | "created_at"> & { id?: string; created_at?: string };
+        Update: never;
+        Relationships: [];
+      };
+      user_milestone_progress: {
+        Row: UserMilestoneProgressRow;
+        Insert: Omit<UserMilestoneProgressRow, "id" | "created_at" | "updated_at"> & { id?: string; user_id?: string; created_at?: string; updated_at?: string };
+        Update: Partial<Omit<UserMilestoneProgressRow, "id" | "user_id" | "created_at">>;
+        Relationships: [];
+      };
+      development_projects: {
+        Row: DevelopmentProjectRow;
+        Insert: Omit<DevelopmentProjectRow, "id" | "created_at" | "updated_at"> & { id?: string; user_id?: string; created_at?: string; updated_at?: string };
+        Update: Partial<Omit<DevelopmentProjectRow, "id" | "user_id" | "created_at">>;
+        Relationships: [];
+      };
+      development_project_capabilities: {
+        Row: JoinRow<"development_project_id">;
+        Insert: Omit<JoinRow<"development_project_id">, "created_at"> & { user_id?: string; created_at?: string };
+        Update: never;
+        Relationships: [];
+      };
+      evidence_project_links: {
+        Row: { user_id: string; evidence_id: string; development_project_id: string; development_project_section_id: string | null; created_at: string };
+        Insert: { user_id?: string; evidence_id: string; development_project_id: string; development_project_section_id?: string | null; created_at?: string };
+        Update: never;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -125,3 +158,6 @@ export type WeeklyReview = WeeklyReviewRow;
 export type CareerAsset = CareerAssetRow;
 export type CapabilityLevelHistory = CapabilityLevelHistoryRow;
 export type ResponsibilityLevelHistory = ResponsibilityLevelHistoryRow;
+export type MilestoneDefinition = MilestoneDefinitionRow;
+export type UserMilestoneProgress = UserMilestoneProgressRow;
+export type DevelopmentProject = DevelopmentProjectRow;

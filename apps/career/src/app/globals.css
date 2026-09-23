@@ -1248,6 +1248,18 @@ a {
 .record-form__footer--dual { align-items: end; }
 .form-actions { display: flex; flex-wrap: wrap; gap: 9px; }
 
+.capability-card__milestones { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.capability-card__milestones summary { color: var(--violet-dark); cursor: pointer; font-size: 12px; font-weight: 750; }
+.milestone-list { display: grid; gap: 9px; margin-top: 13px; }
+.milestone-item { display: grid; gap: 10px; padding: 13px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
+.milestone-item--completed { border-color: #b9d7c5; background: #f6fbf7; }
+.milestone-item__copy strong { font-size: 12px; }
+.milestone-item__copy p { margin: 3px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.milestone-item__controls { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; align-items: end; gap: 8px; }
+.milestone-item__controls label { display: grid; gap: 4px; color: var(--muted); font-size: 10px; font-weight: 700; }
+.milestone-item__controls select, .milestone-item__controls input { min-height: 38px; padding: 0 9px; border: 1px solid var(--line-strong); border-radius: 8px; background: #fff; color: var(--ink); font-size: 11px; }
+.milestone-item__controls .button { min-height: 38px; padding-inline: 12px; font-size: 11px; }
+
 .review-question { display: grid; gap: 8px; }
 .review-question--split { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .review-question--split > div { display: grid; gap: 8px; align-content: start; }
@@ -1432,6 +1444,7 @@ a {
   .review-question,
   .choice-fieldset { padding: 17px; }
   .record-form__footer { grid-template-columns: 1fr; }
+  .milestone-item__controls { grid-template-columns: 1fr; }
   .form-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .detail-heading { flex-direction: column; }
   .detail-heading h1 { font-size: 35px; }
