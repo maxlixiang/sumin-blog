@@ -9,9 +9,10 @@ interface PageHeaderProps {
   dashboardActions?: boolean;
   status?: string;
   actions?: ReactNode;
+  actionsMobileVisible?: boolean;
 }
 
-export function PageHeader({ title, description, dashboardActions = false, status, actions }: PageHeaderProps) {
+export function PageHeader({ title, description, dashboardActions = false, status, actions, actionsMobileVisible = false }: PageHeaderProps) {
   return (
     <header className="page-header">
       <div>
@@ -24,7 +25,7 @@ export function PageHeader({ title, description, dashboardActions = false, statu
           <Link className="button button--secondary" href="/daily"><DailyIcon />今日记录</Link>
           <Link className="button button--primary" href="/evidence/new"><PlusIcon />创建证据</Link>
         </div>
-      ) : actions ? <div className="page-header__actions">{actions}</div> : status ? <span className="page-status">{status}</span> : null}
+      ) : actions ? <div className={`page-header__actions${actionsMobileVisible ? " page-header__actions--mobile-visible" : ""}`}>{actions}</div> : status ? <span className="page-status">{status}</span> : null}
     </header>
   );
 }

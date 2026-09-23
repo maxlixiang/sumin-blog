@@ -1259,6 +1259,16 @@ a {
 .milestone-item__controls label { display: grid; gap: 4px; color: var(--muted); font-size: 10px; font-weight: 700; }
 .milestone-item__controls select, .milestone-item__controls input { min-height: 38px; padding: 0 9px; border: 1px solid var(--line-strong); border-radius: 8px; background: #fff; color: var(--ink); font-size: 11px; }
 .milestone-item__controls .button { min-height: 38px; padding-inline: 12px; font-size: 11px; }
+.capability-card__readiness { margin-top: 10px; }
+.capability-card__readiness summary { color: var(--violet-dark); cursor: pointer; font-size: 12px; font-weight: 750; }
+.readiness-panel { margin-top: 12px; padding: 13px; border: 1px solid #d8d2ec; border-radius: 9px; background: #faf9fd; }
+.readiness-status { margin: 0; color: #7f4147; font-size: 11px; font-weight: 700; }
+.readiness-status--ready { color: #32644b; }
+.readiness-panel ul { display: grid; gap: 6px; margin: 11px 0 0; padding: 0; list-style: none; }
+.readiness-line { display: flex; gap: 7px; color: var(--muted); font-size: 11px; }
+.readiness-line span { color: #9b343b; font-weight: 750; }
+.readiness-line--met span { color: #32644b; }
+.readiness-note { margin: 11px 0 0; padding-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
 
 .review-question { display: grid; gap: 8px; }
 .review-question--split { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
@@ -1388,7 +1398,7 @@ a {
     inset: auto 0 0;
     z-index: 40;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     min-height: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom));
     padding: 5px 6px env(safe-area-inset-bottom);
     border-top: 1px solid var(--line);
@@ -1489,6 +1499,18 @@ a {
 
   .page-header__actions {
     display: none;
+  }
+
+  .page-header__actions--mobile-visible {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-header__actions--mobile-visible .button {
+    min-width: 0;
+    padding-inline: 10px;
+    font-size: 13px;
   }
 
   .responsibility-panel {

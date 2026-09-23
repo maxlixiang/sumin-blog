@@ -38,6 +38,8 @@ type CapabilityLevelDefinitionRow = { id: string; model_version_id: string; capa
 type MilestoneDefinitionRow = { id: string; capability_level_definition_id: string; code: string; title: string; description: string; completion_criteria: string; evidence_hint: string; display_order: number; is_active: boolean; created_at: string };
 type UserMilestoneProgressRow = { id: string; user_id: string; milestone_definition_id: string; status: "not_started" | "in_progress" | "completed"; completion_note: string; supporting_evidence_id: string | null; development_project_id: string | null; completed_at: string | null; created_at: string; updated_at: string };
 type DevelopmentProjectRow = { id: string; user_id: string; title: string; project_type: string; status: "planned" | "active" | "on_hold" | "completed" | "archived"; objective: string; context: string; target_date: string | null; completed_on: string | null; external_url: string | null; created_at: string; updated_at: string };
+type EvidenceRequirementDefinitionRow = { id: string; capability_level_definition_id: string; minimum_total: number; minimum_evidence_level: number | null; minimum_e1_plus: number; minimum_e2_plus: number; minimum_e3_plus: number; minimum_e4_plus: number; minimum_e5: number; minimum_distinct_scenarios: number; minimum_real_world_uses: number; special_requirements: Json; created_at: string };
+type PromotionApplicationRow = { id: string; user_id: string; capability_id: string; model_version_id: string; current_level: number; target_level: number; status: "not_eligible" | "eligible" | "under_review" | "review_completed" | "approved" | "held"; applicant_statement: string; manual_requirement_confirmations: Json; submitted_at: string | null; decided_at: string | null; decision_reason: string; created_at: string; updated_at: string };
 type JoinRow<T extends string> = {
   user_id: string; capability_id: string; created_at: string;
 } & Record<T, string>;
@@ -129,6 +131,18 @@ export interface Database {
         Update: Partial<Omit<DevelopmentProjectRow, "id" | "user_id" | "created_at">>;
         Relationships: [];
       };
+      evidence_requirement_definitions: {
+        Row: EvidenceRequirementDefinitionRow;
+        Insert: Omit<EvidenceRequirementDefinitionRow, "id" | "created_at"> & { id?: string; created_at?: string };
+        Update: never;
+        Relationships: [];
+      };
+      promotion_applications: {
+        Row: PromotionApplicationRow;
+        Insert: Omit<PromotionApplicationRow, "id" | "created_at" | "updated_at"> & { id?: string; user_id?: string; created_at?: string; updated_at?: string };
+        Update: Partial<Omit<PromotionApplicationRow, "id" | "user_id" | "created_at">>;
+        Relationships: [];
+      };
       development_project_capabilities: {
         Row: JoinRow<"development_project_id">;
         Insert: Omit<JoinRow<"development_project_id">, "created_at"> & { user_id?: string; created_at?: string };
@@ -145,6 +159,7 @@ export interface Database {
     Views: Record<string, never>;
     Functions: {
       initialize_capability_state: { Args: Record<PropertyKey, never>; Returns: undefined };
+      approve_promotion_application: { Args: { application_id: string; approval_reason: string }; Returns: undefined };
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
@@ -161,3 +176,5 @@ export type ResponsibilityLevelHistory = ResponsibilityLevelHistoryRow;
 export type MilestoneDefinition = MilestoneDefinitionRow;
 export type UserMilestoneProgress = UserMilestoneProgressRow;
 export type DevelopmentProject = DevelopmentProjectRow;
+export type EvidenceRequirementDefinition = EvidenceRequirementDefinitionRow;
+export type PromotionApplication = PromotionApplicationRow;

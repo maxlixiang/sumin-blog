@@ -1,0 +1,8 @@
+"use client";
+import { useActionState } from "react";
+import { approvePromotionApplication, submitPromotionApplication, type PromotionFormState } from "@/features/promotions/actions";
+const initial: PromotionFormState = {};
+export function PromotionForm({ capabilityId, modelVersionId, currentLevel, applicationId }: { capabilityId: string; modelVersionId: string; currentLevel: number; applicationId?: string }) {
+  const [state, action, pending] = useActionState(applicationId ? approvePromotionApplication : submitPromotionApplication, initial);
+  return <form className="record-form" action={action}>{applicationId ? <><input type="hidden" name="applicationId" value={applicationId} /><div className="form-field"><label htmlFor="reason">批准依据</label><textarea id="reason" name="reason" rows={5} required /><label><input type="checkbox" name="explicitApproval" /> 我确认批准此次晋级，并理解该操作会写入能力等级历史。</label></div><button className="button button--primary" disabled={pending}>{pending ? "正在批准…" : "确认批准晋级"}</button></> : <><input type="hidden" name="capabilityId" value={capabilityId} /><input type="hidden" name="modelVersionId" value={modelVersionId} /><input type="hidden" name="currentLevel" value={currentLevel} /><div className="form-field"><label htmlFor="statement">申请说明</label><textarea id="statement" name="statement" rows={6} required placeholder="说明已满足的真实证据、项目结果及人工核对结论。" /><label><input type="checkbox" name="manualConfirmed" /> 我已人工核对不同场景、真实业务应用及特殊要求。</label></div><button className="button button--primary" disabled={pending}>{pending ? "正在提交…" : "提交晋级申请"}</button></>}{state.message ? <p className="form-message form-message--error">{state.message}</p> : null}</form>;
+}
