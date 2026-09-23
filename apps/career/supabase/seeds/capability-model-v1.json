@@ -1,0 +1,1565 @@
+{
+  "version": "V1",
+  "name": "Career OS Capability Model V1",
+  "status": "active",
+  "source": "User-approved Capability Model V1 and Evidence Requirements",
+  "capabilities": [
+    {
+      "slug": "business",
+      "name": "商业理解",
+      "coreQuestion": "我是否真正理解一门生意如何创造价值、赚钱、竞争和增长？",
+      "levels": [
+        {
+          "level": 1,
+          "name": "认识业务",
+          "summary": "认识业务",
+          "standard": "能够准确描述公司卖什么、卖给谁、通过什么渠道销售、主要业务部门分别承担什么职责，以及公司的基本业务流程。",
+          "promotionStatement": "我已经建立公司的基础商业认知，能够不依赖零散信息，清楚说明产品、客户、渠道、组织和基本业务流程。",
+          "reviewerPerspective": "GM / Business Unit President",
+          "milestones": [
+            {
+              "code": "BUS-L1-M01",
+              "title": "产品与品牌清单",
+              "description": "梳理主要产品、品牌、SKU类别、核心用途和主要市场。"
+            },
+            {
+              "code": "BUS-L1-M02",
+              "title": "客户结构清单",
+              "description": "明确直接客户、终端消费者、B2B/B2C关系及主要客户类型。"
+            },
+            {
+              "code": "BUS-L1-M03",
+              "title": "渠道基础图",
+              "description": "梳理直营、经销、电商、零售及其他主要渠道。"
+            },
+            {
+              "code": "BUS-L1-M04",
+              "title": "组织与业务部门地图",
+              "description": "梳理销售、市场、供应链、产品、财务、法务、生产等主要部门及职责。"
+            },
+            {
+              "code": "BUS-L1-M05",
+              "title": "业务流程 V0.1",
+              "description": "画出从产品、生产/采购、库存、渠道、销售、客户到回款的基本业务链路。"
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "name": "理解商业模式",
+          "summary": "理解商业模式",
+          "standard": "能够解释公司的完整价值链、收入成本结构、渠道关系、利润形成方式、议价权、主要风险及关键商业驱动因素。",
+          "promotionStatement": "我已经不只是知道公司做什么，而是能够解释公司为什么这样运转、价值在哪里创造，以及利润是怎样产生的。",
+          "reviewerPerspective": "GM / Business Unit President",
+          "milestones": [
+            {
+              "code": "BUS-L2-M01",
+              "title": "公司业务地图 V1",
+              "description": "覆盖产品研发、采购、生产、库存、物流、渠道、营销、消费者购买、回款、收入、毛利润、净利润。"
+            },
+            {
+              "code": "BUS-L2-M02",
+              "title": "北美业务地图 V1",
+              "description": "梳理北美市场中的产品、客户、渠道、Distributor、物流、仓储、营销、合规、回款及竞争者。"
+            },
+            {
+              "code": "BUS-L2-M03",
+              "title": "渠道结构图 V1",
+              "description": "理解各主要渠道的价值、成本、返点、账期、议价权、增长空间和风险。"
+            },
+            {
+              "code": "BUS-L2-M04",
+              "title": "供应链地图 V1",
+              "description": "梳理采购、生产、运输、仓储、库存、交付等关键节点。"
+            },
+            {
+              "code": "BUS-L2-M05",
+              "title": "产品利润链路图 V1",
+              "description": "选择至少一个代表性产品，梳理售价、渠道费用、物流、生产/采购、营销、毛利及利润链路。"
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "name": "商业判断与应用",
+          "summary": "商业判断与应用",
+          "standard": "能够把商业理解应用于真实客户、渠道、市场、产品和合作项目，并形成具有实际决策价值的商业判断。",
+          "promotionStatement": "我已经能够将对商业模式的理解用于真实业务问题，并通过分析和建议影响实际业务选择。",
+          "reviewerPerspective": "GM / Business Unit President",
+          "milestones": [
+            {
+              "code": "BUS-L3-M01",
+              "title": "完成5个Business Case",
+              "description": "针对真实业务问题完成至少5个结构化Business Case。"
+            },
+            {
+              "code": "BUS-L3-M02",
+              "title": "客户/合作伙伴经济性分析",
+              "description": "至少完整分析一次重要客户、Distributor、平台或合作伙伴的综合商业价值。"
+            },
+            {
+              "code": "BUS-L3-M03",
+              "title": "渠道经济性分析",
+              "description": "至少比较两个渠道的成本、利润、增长、风险及资源需求。"
+            },
+            {
+              "code": "BUS-L3-M04",
+              "title": "市场/增长机会分析",
+              "description": "至少完成一次新市场、新渠道、新客户或新品机会分析。"
+            },
+            {
+              "code": "BUS-L3-M05",
+              "title": "商业建议进入真实决策",
+              "description": "至少一次由本人提出的商业Recommendation进入真实业务或管理讨论。"
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "name": "商业结果负责",
+          "summary": "商业结果负责",
+          "standard": "能够独立负责重要商业问题，从分析、资源协调、执行到最终结果承担完整责任。",
+          "promotionStatement": "我已经不仅能够提出商业判断，而且能够对一个重要商业项目的全过程和最终结果负责。",
+          "reviewerPerspective": "GM / Business Unit President",
+          "milestones": [
+            {
+              "code": "BUS-L4-M01",
+              "title": "主导完整商业项目",
+              "description": "主导至少一个新市场、新渠道、新Distributor、重大客户、新品商业化或类似项目。"
+            },
+            {
+              "code": "BUS-L4-M02",
+              "title": "建立明确经营目标",
+              "description": "为项目建立收入、成本、时间、客户、市场或其他可衡量目标。"
+            },
+            {
+              "code": "BUS-L4-M03",
+              "title": "跨部门资源协调",
+              "description": "实际协调至少三个职能共同交付。"
+            },
+            {
+              "code": "BUS-L4-M04",
+              "title": "承担关键决策责任",
+              "description": "至少在两个重要项目节点组织信息、形成判断并推动方案。"
+            },
+            {
+              "code": "BUS-L4-M05",
+              "title": "正式项目复盘",
+              "description": "完成目标、结果、偏差、成功原因、失败原因、错误判断和改进的正式复盘。"
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "name": "商业能力组织化",
+          "summary": "商业能力组织化",
+          "standard": "能够把个人商业判断转化为可复制、可由团队持续使用的组织能力。",
+          "promotionStatement": "我的商业能力已经不再只依赖个人经验，而是形成能够被他人重复使用并持续影响经营决策的方法和机制。",
+          "reviewerPerspective": "GM / Business Unit President",
+          "milestones": [
+            {
+              "code": "BUS-L5-M01",
+              "title": "商业评估框架",
+              "description": "形成可复制的Business Case Framework。"
+            },
+            {
+              "code": "BUS-L5-M02",
+              "title": "市场进入框架",
+              "description": "形成可重复使用的Market Entry Framework。"
+            },
+            {
+              "code": "BUS-L5-M03",
+              "title": "渠道/客户评价框架",
+              "description": "建立系统的渠道或客户评估方法。"
+            },
+            {
+              "code": "BUS-L5-M04",
+              "title": "培养他人商业判断能力",
+              "description": "至少使一名同事或下属能够独立使用上述框架。"
+            },
+            {
+              "code": "BUS-L5-M05",
+              "title": "框架被组织实际使用",
+              "description": "至少一种框架进入真实团队或业务流程持续使用。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "finance",
+      "name": "财务与经营数字",
+      "coreQuestion": "我能否通过数字看懂业务，并利用数字进行经营判断？",
+      "levels": [
+        {
+          "level": 1,
+          "name": "掌握经营财务语言",
+          "summary": "掌握经营财务语言",
+          "standard": "理解高级管理者日常使用的基础财务概念、三张表及基本经营指标。",
+          "promotionStatement": "我已经能够理解公司经营讨论中的基本财务语言，并能够把主要财务概念与业务活动联系起来。",
+          "reviewerPerspective": "CFO",
+          "milestones": [
+            {
+              "code": "FIN-L1-M01",
+              "title": "利润表",
+              "description": "理解Revenue、COGS、Gross Profit、Operating Expense、Operating Profit、Net Profit。"
+            },
+            {
+              "code": "FIN-L1-M02",
+              "title": "资产负债表",
+              "description": "理解资产、负债、权益、库存、应收和现金。"
+            },
+            {
+              "code": "FIN-L1-M03",
+              "title": "现金流量表",
+              "description": "理解经营、投资和融资现金流。"
+            },
+            {
+              "code": "FIN-L1-M04",
+              "title": "核心经营指标",
+              "description": "理解并能够计算毛利率、净利率、ROI和Break-even。"
+            },
+            {
+              "code": "FIN-L1-M05",
+              "title": "营运资本基础",
+              "description": "理解Inventory、AR、AP和Cash Conversion Cycle。"
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "name": "用数字看懂业务",
+          "summary": "用数字看懂业务",
+          "standard": "能够把经营活动与财务结果连接起来，并解释主要经营数字为什么发生变化。",
+          "promotionStatement": "我已经不只是能读财务数字，而是能够通过数字变化理解背后的真实业务变化。",
+          "reviewerPerspective": "CFO",
+          "milestones": [
+            {
+              "code": "FIN-L2-M01",
+              "title": "公司P&L结构图",
+              "description": "理解公司的主要收入、成本和利润杠杆。"
+            },
+            {
+              "code": "FIN-L2-M02",
+              "title": "北美业务P&L V1",
+              "description": "建立北美业务收入、COGS、物流、渠道、营销、毛利及经营利润模型。"
+            },
+            {
+              "code": "FIN-L2-M03",
+              "title": "代表性SKU Unit Economics",
+              "description": "至少分析一个真实或脱敏产品的单位经济模型。"
+            },
+            {
+              "code": "FIN-L2-M04",
+              "title": "库存与现金转换分析",
+              "description": "理解库存天数、应收、应付及现金转换周期。"
+            },
+            {
+              "code": "FIN-L2-M05",
+              "title": "财务变化解释案例",
+              "description": "至少选择三个真实经营数字变化并解释其业务原因。"
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "name": "用财务做经营决策",
+          "summary": "用财务做经营决策",
+          "standard": "能够利用财务模型、ROI、Break-even、现金流和情景分析支持真实经营决策。",
+          "promotionStatement": "我已经能够通过财务分析比较不同商业方案，并让数字真正参与经营选择。",
+          "reviewerPerspective": "CFO",
+          "milestones": [
+            {
+              "code": "FIN-L3-M01",
+              "title": "ROI分析",
+              "description": "至少完成一个真实项目ROI分析。"
+            },
+            {
+              "code": "FIN-L3-M02",
+              "title": "Break-even分析",
+              "description": "完成至少一次真实项目盈亏平衡分析。"
+            },
+            {
+              "code": "FIN-L3-M03",
+              "title": "账期/Working Capital分析",
+              "description": "分析Net 30、60、90等条件对资金占用的影响。"
+            },
+            {
+              "code": "FIN-L3-M04",
+              "title": "Scenario Analysis",
+              "description": "至少完成Base、Upside、Downside三种情景分析。"
+            },
+            {
+              "code": "FIN-L3-M05",
+              "title": "财务建议进入真实决策",
+              "description": "至少一次由本人完成的财务分析进入真实业务方案讨论。"
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "name": "对经营数字负责",
+          "summary": "对经营数字负责",
+          "standard": "开始对真实预算、成本、ROI或其他经营指标承担责任，而不仅是分析别人负责的数字。",
+          "promotionStatement": "我已经开始对真实经营数字承担责任，能够分析偏差、采取纠偏措施并对结果负责。",
+          "reviewerPerspective": "CFO",
+          "milestones": [
+            {
+              "code": "FIN-L4-M01",
+              "title": "承担明确预算或经济指标",
+              "description": "真实承担至少一项预算、成本、ROI或经营指标。"
+            },
+            {
+              "code": "FIN-L4-M02",
+              "title": "Budget vs Actual分析",
+              "description": "完成至少一个完整周期的预算与实际比较。"
+            },
+            {
+              "code": "FIN-L4-M03",
+              "title": "偏差解释",
+              "description": "解释主要预算、利润、现金或经营指标偏差。"
+            },
+            {
+              "code": "FIN-L4-M04",
+              "title": "提出并执行纠偏措施",
+              "description": "针对偏差采取真实行动。"
+            },
+            {
+              "code": "FIN-L4-M05",
+              "title": "经营结果复盘",
+              "description": "完成目标、Actual、Variance、Action、Outcome完整复盘。"
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "name": "资源配置",
+          "summary": "资源配置",
+          "standard": "能够在多个竞争机会之间综合资本回报、现金流、风险和战略价值配置有限资源。",
+          "promotionStatement": "我已经能够从单项财务分析进一步走向资源配置，在多个竞争机会之间进行真实经营取舍。",
+          "reviewerPerspective": "CFO",
+          "milestones": [
+            {
+              "code": "FIN-L5-M01",
+              "title": "多项目投资比较",
+              "description": "至少比较三个竞争项目。"
+            },
+            {
+              "code": "FIN-L5-M02",
+              "title": "资本/预算配置框架",
+              "description": "建立ROI、Cash、Risk、Strategic Value综合评价方法。"
+            },
+            {
+              "code": "FIN-L5-M03",
+              "title": "机会成本分析",
+              "description": "明确选择A意味着放弃什么。"
+            },
+            {
+              "code": "FIN-L5-M04",
+              "title": "真实资源再配置案例",
+              "description": "发生实际增加、削减、退出或转移资源。"
+            },
+            {
+              "code": "FIN-L5-M05",
+              "title": "建立资源配置机制",
+              "description": "形成季度预算Review、项目投资评估或类似机制。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "strategy",
+      "name": "战略与决策",
+      "coreQuestion": "在信息不完整和资源有限的情况下，我能否判断什么值得做、什么不值得做？",
+      "levels": [
+        {
+          "level": 1,
+          "name": "建立战略语言",
+          "summary": "建立战略语言",
+          "standard": "理解竞争、定位、机会成本、Trade-off、竞争优势和资源配置等基本战略语言。",
+          "promotionStatement": "我已经具备讨论战略问题所需的基本语言，并能够用这些概念描述公司当前的竞争位置。",
+          "reviewerPerspective": "CEO / Strategy Committee",
+          "milestones": [
+            {
+              "code": "STR-L1-M01",
+              "title": "行业结构基础认知",
+              "description": "行业结构基础认知"
+            },
+            {
+              "code": "STR-L1-M02",
+              "title": "竞争对手基础地图",
+              "description": "竞争对手基础地图"
+            },
+            {
+              "code": "STR-L1-M03",
+              "title": "公司战略定位 V0.1",
+              "description": "公司战略定位 V0.1"
+            },
+            {
+              "code": "STR-L1-M04",
+              "title": "战略核心概念与公司现实对应",
+              "description": "战略核心概念与公司现实对应"
+            },
+            {
+              "code": "STR-L1-M05",
+              "title": "当前业务战略问题清单",
+              "description": "当前业务战略问题清单"
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "name": "看懂战略环境",
+          "summary": "看懂战略环境",
+          "standard": "能够解释公司所在市场的竞争格局、重要趋势、竞争优势及最值得管理层关注的战略问题。",
+          "promotionStatement": "我已经能够从行业、竞争和公司自身能力出发识别真正重要的战略问题。",
+          "reviewerPerspective": "CEO / Strategy Committee",
+          "milestones": [
+            {
+              "code": "STR-L2-M01",
+              "title": "北美竞争格局图 V1",
+              "description": "北美竞争格局图 V1"
+            },
+            {
+              "code": "STR-L2-M02",
+              "title": "市场趋势分析 V1",
+              "description": "市场趋势分析 V1"
+            },
+            {
+              "code": "STR-L2-M03",
+              "title": "公司竞争优势分析",
+              "description": "公司竞争优势分析"
+            },
+            {
+              "code": "STR-L2-M04",
+              "title": "真实战略问题树",
+              "description": "真实战略问题树"
+            },
+            {
+              "code": "STR-L2-M05",
+              "title": "战略优先级清单",
+              "description": "战略优先级清单"
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "name": "做出战略选择",
+          "summary": "做出战略选择",
+          "standard": "面对真实战略问题能够提出多个方案、进行Trade-off并形成明确Recommendation。",
+          "promotionStatement": "我已经能够在多个可行方案之间进行真正取舍，并用结构化判断影响战略选择。",
+          "reviewerPerspective": "CEO / Strategy Committee",
+          "milestones": [
+            {
+              "code": "STR-L3-M01",
+              "title": "完成3份Decision Memo",
+              "description": "完成3份Decision Memo"
+            },
+            {
+              "code": "STR-L3-M02",
+              "title": "完成至少一次明确Trade-off案例",
+              "description": "完成至少一次明确Trade-off案例"
+            },
+            {
+              "code": "STR-L3-M03",
+              "title": "完成一次Scenario Analysis",
+              "description": "完成一次Scenario Analysis"
+            },
+            {
+              "code": "STR-L3-M04",
+              "title": "完成一次Pre-mortem失败预演",
+              "description": "完成一次Pre-mortem失败预演"
+            },
+            {
+              "code": "STR-L3-M05",
+              "title": "至少一项战略建议进入真实管理讨论",
+              "description": "至少一项战略建议进入真实管理讨论"
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "name": "主导战略议题",
+          "summary": "主导战略议题",
+          "standard": "能够从战略判断进一步负责资源配置、执行和实际结果。",
+          "promotionStatement": "我已经能够主导重要战略议题，并将战略从选择转化为资源、行动和结果。",
+          "reviewerPerspective": "CEO / Strategy Committee",
+          "milestones": [
+            {
+              "code": "STR-L4-M01",
+              "title": "主导一个重大战略议题",
+              "description": "主导一个重大战略议题"
+            },
+            {
+              "code": "STR-L4-M02",
+              "title": "将战略转化为执行目标",
+              "description": "将战略转化为执行目标"
+            },
+            {
+              "code": "STR-L4-M03",
+              "title": "完成真实资源取舍",
+              "description": "完成真实资源取舍"
+            },
+            {
+              "code": "STR-L4-M04",
+              "title": "建立战略监控指标",
+              "description": "建立战略监控指标"
+            },
+            {
+              "code": "STR-L4-M05",
+              "title": "完成一次基于新信息的战略修正",
+              "description": "完成一次基于新信息的战略修正"
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "name": "建立战略机制",
+          "summary": "建立战略机制",
+          "standard": "能够建立让组织持续进行战略选择、资源配置和退出判断的机制。",
+          "promotionStatement": "战略判断已经从个人能力升级为组织持续使用的选择机制。",
+          "reviewerPerspective": "CEO / Strategy Committee",
+          "milestones": [
+            {
+              "code": "STR-L5-M01",
+              "title": "建立战略Review机制",
+              "description": "建立战略Review机制"
+            },
+            {
+              "code": "STR-L5-M02",
+              "title": "建立资源配置机制",
+              "description": "建立资源配置机制"
+            },
+            {
+              "code": "STR-L5-M03",
+              "title": "建立项目退出标准",
+              "description": "建立项目退出标准"
+            },
+            {
+              "code": "STR-L5-M04",
+              "title": "建立战略Portfolio管理框架",
+              "description": "建立战略Portfolio管理框架"
+            },
+            {
+              "code": "STR-L5-M05",
+              "title": "培养至少一名能够独立使用该框架的人",
+              "description": "培养至少一名能够独立使用该框架的人"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "execution",
+      "name": "执行与项目管理",
+      "coreQuestion": "我能不能把复杂事情真正做成？",
+      "levels": [
+        {
+          "level": 1,
+          "name": "可靠交付",
+          "summary": "可靠交付",
+          "standard": "能够可靠管理自己的工作、优先级、Deadline和风险，并持续履行承诺。",
+          "promotionStatement": "我已经形成稳定、可靠的个人交付能力，而不只是依靠临时加班完成任务。",
+          "reviewerPerspective": "COO",
+          "milestones": [
+            {
+              "code": "EXE-L1-M01",
+              "title": "任务使用Outcome定义",
+              "description": "任务使用Outcome定义"
+            },
+            {
+              "code": "EXE-L1-M02",
+              "title": "建立优先级管理",
+              "description": "建立优先级管理"
+            },
+            {
+              "code": "EXE-L1-M03",
+              "title": "建立Deadline管理",
+              "description": "建立Deadline管理"
+            },
+            {
+              "code": "EXE-L1-M04",
+              "title": "建立个人风险清单",
+              "description": "建立个人风险清单"
+            },
+            {
+              "code": "EXE-L1-M05",
+              "title": "至少完成3次个人交付复盘",
+              "description": "至少完成3次个人交付复盘"
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "name": "独立管理项目",
+          "summary": "独立管理项目",
+          "standard": "能够从头到尾负责一个边界清晰的项目。",
+          "promotionStatement": "我已经能够把目标转化为计划，并独立完成完整项目生命周期。",
+          "reviewerPerspective": "COO",
+          "milestones": [
+            {
+              "code": "EXE-L2-M01",
+              "title": "完成Project Charter",
+              "description": "完成Project Charter"
+            },
+            {
+              "code": "EXE-L2-M02",
+              "title": "建立Milestone Plan",
+              "description": "建立Milestone Plan"
+            },
+            {
+              "code": "EXE-L2-M03",
+              "title": "建立Stakeholder Map",
+              "description": "建立Stakeholder Map"
+            },
+            {
+              "code": "EXE-L2-M04",
+              "title": "建立Risk / Issue Register",
+              "description": "建立Risk / Issue Register"
+            },
+            {
+              "code": "EXE-L2-M05",
+              "title": "完整完成并复盘至少2个项目",
+              "description": "完整完成并复盘至少2个项目"
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "name": "推动跨部门项目",
+          "summary": "推动跨部门项目",
+          "standard": "能够在没有完全行政权力的情况下推动多个职能共同交付结果。",
+          "promotionStatement": "我已经能够跨部门协调资源、解决阻塞并推动复杂项目达到目标。",
+          "reviewerPerspective": "COO",
+          "milestones": [
+            {
+              "code": "EXE-L3-M01",
+              "title": "主导一个涉及至少3职能的项目",
+              "description": "主导一个涉及至少3职能的项目"
+            },
+            {
+              "code": "EXE-L3-M02",
+              "title": "建立项目治理节奏",
+              "description": "建立项目治理节奏"
+            },
+            {
+              "code": "EXE-L3-M03",
+              "title": "解决至少一次重大实际阻塞",
+              "description": "解决至少一次重大实际阻塞"
+            },
+            {
+              "code": "EXE-L3-M04",
+              "title": "完成一次真实项目变更管理",
+              "description": "完成一次真实项目变更管理"
+            },
+            {
+              "code": "EXE-L3-M05",
+              "title": "完成正式跨部门项目复盘",
+              "description": "完成正式跨部门项目复盘"
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "name": "在复杂变化中交付",
+          "summary": "在复杂变化中交付",
+          "standard": "能够在高不确定性、多个Workstream和资源冲突下持续对结果负责。",
+          "promotionStatement": "即使项目环境发生重大变化，我仍然能够重新配置资源和计划，并最终交付核心结果。",
+          "reviewerPerspective": "COO",
+          "milestones": [
+            {
+              "code": "EXE-L4-M01",
+              "title": "同时管理多个相互依赖Workstreams",
+              "description": "同时管理多个相互依赖Workstreams"
+            },
+            {
+              "code": "EXE-L4-M02",
+              "title": "完成一次重大Re-plan",
+              "description": "完成一次重大Re-plan"
+            },
+            {
+              "code": "EXE-L4-M03",
+              "title": "解决一次真实资源冲突",
+              "description": "解决一次真实资源冲突"
+            },
+            {
+              "code": "EXE-L4-M04",
+              "title": "建立关键决策升级机制",
+              "description": "建立关键决策升级机制"
+            },
+            {
+              "code": "EXE-L4-M05",
+              "title": "重大变化后仍实现核心结果",
+              "description": "重大变化后仍实现核心结果"
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "name": "建立执行系统",
+          "summary": "建立执行系统",
+          "standard": "建立不依赖本人逐项推动、能够让组织持续交付的机制。",
+          "promotionStatement": "我的执行能力已经从“我能推进项目”升级为“组织拥有持续推进项目的机制”。",
+          "reviewerPerspective": "COO",
+          "milestones": [
+            {
+              "code": "EXE-L5-M01",
+              "title": "建立统一项目治理框架",
+              "description": "建立统一项目治理框架"
+            },
+            {
+              "code": "EXE-L5-M02",
+              "title": "建立标准Review节奏",
+              "description": "建立标准Review节奏"
+            },
+            {
+              "code": "EXE-L5-M03",
+              "title": "建立风险升级机制",
+              "description": "建立风险升级机制"
+            },
+            {
+              "code": "EXE-L5-M04",
+              "title": "培养其他Project Owner",
+              "description": "培养其他Project Owner"
+            },
+            {
+              "code": "EXE-L5-M05",
+              "title": "本人不直接介入日常后仍能持续交付",
+              "description": "本人不直接介入日常后仍能持续交付"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "leadership",
+      "name": "领导力",
+      "coreQuestion": "我能否通过别人持续产生结果，并让别人因为我的管理而变得更强？",
+      "levels": [
+        {
+          "level": 1,
+          "name": "明确任务与期望",
+          "summary": "明确任务与期望",
+          "standard": "能够清楚向他人定义目标、标准、责任和Deadline。",
+          "promotionStatement": "我已经能够把工作有效交给别人，而不是依赖模糊指令或最终自己接回来完成。",
+          "reviewerPerspective": "CEO + CHRO",
+          "milestones": [
+            {
+              "code": "LEA-L1-M01",
+              "title": "明确Outcome",
+              "description": "明确Outcome"
+            },
+            {
+              "code": "LEA-L1-M02",
+              "title": "明确完成标准",
+              "description": "明确完成标准"
+            },
+            {
+              "code": "LEA-L1-M03",
+              "title": "明确Owner与责任",
+              "description": "明确Owner与责任"
+            },
+            {
+              "code": "LEA-L1-M04",
+              "title": "完成至少5次真实委派",
+              "description": "完成至少5次真实委派"
+            },
+            {
+              "code": "LEA-L1-M05",
+              "title": "完成至少一次委派复盘",
+              "description": "完成至少一次委派复盘"
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "name": "授权与反馈",
+          "summary": "授权与反馈",
+          "standard": "能够真正授权，并通过检查节点、反馈和辅导提高他人的工作质量。",
+          "promotionStatement": "我已经能够把责任真正交出去，通过反馈和辅导让别人独立完成工作。",
+          "reviewerPerspective": "CEO + CHRO",
+          "milestones": [
+            {
+              "code": "LEA-L2-M01",
+              "title": "授权一项过去由本人负责的工作",
+              "description": "授权一项过去由本人负责的工作"
+            },
+            {
+              "code": "LEA-L2-M02",
+              "title": "建立合理检查节点",
+              "description": "建立合理检查节点"
+            },
+            {
+              "code": "LEA-L2-M03",
+              "title": "完成至少3次正式反馈",
+              "description": "完成至少3次正式反馈"
+            },
+            {
+              "code": "LEA-L2-M04",
+              "title": "为至少1人建立成长目标",
+              "description": "为至少1人建立成长目标"
+            },
+            {
+              "code": "LEA-L2-M05",
+              "title": "至少一次面对错误时通过辅导而不是收回授权解决",
+              "description": "至少一次面对错误时通过辅导而不是收回授权解决"
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "name": "培养人才",
+          "summary": "培养人才",
+          "standard": "能够让他人产生可观察、可持续的新能力。",
+          "promotionStatement": "我已经不只是管理任务，而是能够真正提高他人的能力并降低团队对我个人执行的依赖。",
+          "reviewerPerspective": "CEO + CHRO",
+          "milestones": [
+            {
+              "code": "LEA-L3-M01",
+              "title": "使至少1人获得一项新的独立能力",
+              "description": "使至少1人获得一项新的独立能力"
+            },
+            {
+              "code": "LEA-L3-M02",
+              "title": "完成一次困难反馈",
+              "description": "完成一次困难反馈"
+            },
+            {
+              "code": "LEA-L3-M03",
+              "title": "处理一次真实工作或人际冲突",
+              "description": "处理一次真实工作或人际冲突"
+            },
+            {
+              "code": "LEA-L3-M04",
+              "title": "建立至少一种团队工作机制",
+              "description": "建立至少一种团队工作机制"
+            },
+            {
+              "code": "LEA-L3-M05",
+              "title": "建立Backup / Coverage机制",
+              "description": "建立Backup / Coverage机制"
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "name": "Team Ownership",
+          "summary": "Team Ownership",
+          "standard": "对一个持续存在的团队或跨职能工作单元的整体结果承担责任，并通过别人完成主要工作。",
+          "promotionStatement": "我已经能够对一个团队或持续工作单元的整体结果负责，而不是仅依靠自己的个人执行。",
+          "reviewerPerspective": "CEO + CHRO",
+          "milestones": [
+            {
+              "code": "LEA-L4-M01",
+              "title": "定义团队整体目标",
+              "description": "定义团队整体目标"
+            },
+            {
+              "code": "LEA-L4-M02",
+              "title": "明确团队角色与责任",
+              "description": "明确团队角色与责任"
+            },
+            {
+              "code": "LEA-L4-M03",
+              "title": "管理不同绩效水平",
+              "description": "管理不同绩效水平"
+            },
+            {
+              "code": "LEA-L4-M04",
+              "title": "处理至少一个真实人员管理难题",
+              "description": "处理至少一个真实人员管理难题"
+            },
+            {
+              "code": "LEA-L4-M05",
+              "title": "通过团队而非本人主要执行实现可衡量结果",
+              "description": "通过团队而非本人主要执行实现可衡量结果"
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "name": "建立组织能力",
+          "summary": "建立组织能力",
+          "standard": "能够建立人才梯队、管理机制和组织结构，使团队在本人减少直接介入后仍能稳定运行。",
+          "promotionStatement": "我的领导力已经从带好一个团队升级为建立可以持续运行和培养新负责人的组织能力。",
+          "reviewerPerspective": "CEO + CHRO",
+          "milestones": [
+            {
+              "code": "LEA-L5-M01",
+              "title": "培养至少1名新的独立负责人",
+              "description": "培养至少1名新的独立负责人"
+            },
+            {
+              "code": "LEA-L5-M02",
+              "title": "建立人才梯队",
+              "description": "建立人才梯队"
+            },
+            {
+              "code": "LEA-L5-M03",
+              "title": "建立持续管理机制",
+              "description": "建立持续管理机制"
+            },
+            {
+              "code": "LEA-L5-M04",
+              "title": "完成一次组织设计或角色调整",
+              "description": "完成一次组织设计或角色调整"
+            },
+            {
+              "code": "LEA-L5-M05",
+              "title": "本人短期退出后团队仍可稳定运行",
+              "description": "本人短期退出后团队仍可稳定运行"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "influence",
+      "name": "影响力与管理沟通",
+      "coreQuestion": "即使没有行政权力，我是否能够改变关键人的认知和行动？",
+      "levels": [
+        {
+          "level": 1,
+          "name": "结构化表达",
+          "summary": "结构化表达",
+          "standard": "能够简洁、准确、有逻辑地表达复杂问题，并根据听众调整表达。",
+          "promotionStatement": "我已经能够通过结构化表达，让不同角色快速理解问题、结论和建议。",
+          "reviewerPerspective": "Executive Committee",
+          "milestones": [
+            {
+              "code": "INF-L1-M01",
+              "title": "形成结论先行表达习惯",
+              "description": "形成结论先行表达习惯"
+            },
+            {
+              "code": "INF-L1-M02",
+              "title": "使用问题—分析—建议结构",
+              "description": "使用问题—分析—建议结构"
+            },
+            {
+              "code": "INF-L1-M03",
+              "title": "完成至少3份一页Executive Summary",
+              "description": "完成至少3份一页Executive Summary"
+            },
+            {
+              "code": "INF-L1-M04",
+              "title": "至少3次重要会议结构化发言",
+              "description": "至少3次重要会议结构化发言"
+            },
+            {
+              "code": "INF-L1-M05",
+              "title": "针对法务、业务和高管调整同一问题的表达方式",
+              "description": "针对法务、业务和高管调整同一问题的表达方式"
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "name": "专业语言商业化",
+          "summary": "专业语言商业化",
+          "standard": "能够把法律、风险和专业判断转换成业务能够直接用于决策的商业语言。",
+          "promotionStatement": "我已经不只是给出Legal Opinion，而是能够把风险转换成收益、成本、概率、替代方案和Recommendation。",
+          "reviewerPerspective": "Executive Committee",
+          "milestones": [
+            {
+              "code": "INF-L2-M01",
+              "title": "完成5个Legal → Business案例",
+              "description": "完成5个Legal → Business案例"
+            },
+            {
+              "code": "INF-L2-M02",
+              "title": "至少使用一次A/B/C方案化表达",
+              "description": "至少使用一次A/B/C方案化表达"
+            },
+            {
+              "code": "INF-L2-M03",
+              "title": "在适合情况下量化时间、成本、损失或概率",
+              "description": "在适合情况下量化时间、成本、损失或概率"
+            },
+            {
+              "code": "INF-L2-M04",
+              "title": "在重要问题中明确提出本人Recommendation",
+              "description": "在重要问题中明确提出本人Recommendation"
+            },
+            {
+              "code": "INF-L2-M05",
+              "title": "至少一次因本人表达和建议使业务改变原方案",
+              "description": "至少一次因本人表达和建议使业务改变原方案"
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "name": "无职权推动行动",
+          "summary": "无职权推动行动",
+          "standard": "能够在没有行政权力的情况下协调不同利益相关方并推动真实行动。",
+          "promotionStatement": "我已经能够依靠判断、信任和协调能力，而不是职位命令，推动跨部门协作产生结果。",
+          "reviewerPerspective": "Executive Committee",
+          "milestones": [
+            {
+              "code": "INF-L3-M01",
+              "title": "针对复杂事项建立Stakeholder Map",
+              "description": "针对复杂事项建立Stakeholder Map"
+            },
+            {
+              "code": "INF-L3-M02",
+              "title": "完成至少2次跨部门推动",
+              "description": "完成至少2次跨部门推动"
+            },
+            {
+              "code": "INF-L3-M03",
+              "title": "处理至少一次真实利益冲突",
+              "description": "处理至少一次真实利益冲突"
+            },
+            {
+              "code": "INF-L3-M04",
+              "title": "完成至少一次重要内部或外部谈判",
+              "description": "完成至少一次重要内部或外部谈判"
+            },
+            {
+              "code": "INF-L3-M05",
+              "title": "把Stakeholder从“同意”真正推动到“行动”",
+              "description": "把Stakeholder从“同意”真正推动到“行动”"
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "name": "影响高级决策",
+          "summary": "影响高级决策",
+          "standard": "能够影响高级管理层、重大谈判、重要资源配置或高分歧问题。",
+          "promotionStatement": "我的影响力已经能够改变重要决策，而不只是让别人理解我的意见。",
+          "reviewerPerspective": "Executive Committee",
+          "milestones": [
+            {
+              "code": "INF-L4-M01",
+              "title": "完成至少2份Executive Decision Memo",
+              "description": "完成至少2份Executive Decision Memo"
+            },
+            {
+              "code": "INF-L4-M02",
+              "title": "参与至少一次重大管理决策",
+              "description": "参与至少一次重大管理决策"
+            },
+            {
+              "code": "INF-L4-M03",
+              "title": "承担至少一次重大谈判中的关键角色",
+              "description": "承担至少一次重大谈判中的关键角色"
+            },
+            {
+              "code": "INF-L4-M04",
+              "title": "影响一次重要资源或优先级调整",
+              "description": "影响一次重要资源或优先级调整"
+            },
+            {
+              "code": "INF-L4-M05",
+              "title": "在高分歧问题中建立共识或推动明确决策",
+              "description": "在高分歧问题中建立共识或推动明确决策"
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "name": "Trusted Business Leader",
+          "summary": "Trusted Business Leader",
+          "standard": "影响力主要来自长期可信赖的判断，而不是法务职位或专业权限。",
+          "promotionStatement": "即使问题并不属于法务职责，管理层仍然会主动寻求我的判断，并将我视为可信赖的商业领导者。",
+          "reviewerPerspective": "Executive Committee",
+          "milestones": [
+            {
+              "code": "INF-L5-M01",
+              "title": "管理层主动就非法律问题寻求本人判断",
+              "description": "管理层主动就非法律问题寻求本人判断"
+            },
+            {
+              "code": "INF-L5-M02",
+              "title": "建立跨多个职能的关键Stakeholder信任网络",
+              "description": "建立跨多个职能的关键Stakeholder信任网络"
+            },
+            {
+              "code": "INF-L5-M03",
+              "title": "在问题定义阶段而非最后Legal Review阶段即被邀请参与",
+              "description": "在问题定义阶段而非最后Legal Review阶段即被邀请参与"
+            },
+            {
+              "code": "INF-L5-M04",
+              "title": "培养其他人的管理沟通和影响能力",
+              "description": "培养其他人的管理沟通和影响能力"
+            },
+            {
+              "code": "INF-L5-M05",
+              "title": "建立至少一种被他人持续使用的管理沟通机制",
+              "description": "建立至少一种被他人持续使用的管理沟通机制"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "requirements": {
+    "business": [
+      {
+        "level": 1,
+        "minimumTotal": 3,
+        "minimumE2Plus": 1,
+        "minimumE3Plus": 0,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 1,
+        "specialRequirements": {
+          "minimum_business_interviews": 3,
+          "minimum_distinct_functions_interviewed": 2
+        }
+      },
+      {
+        "level": 2,
+        "minimumTotal": 6,
+        "minimumE2Plus": 4,
+        "minimumE3Plus": 2,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_business_cases": 2,
+          "minimum_distinct_functions_validated": 3
+        }
+      },
+      {
+        "level": 3,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 2,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 4,
+        "minimumRealWorldUses": 3,
+        "specialRequirements": {
+          "minimum_business_cases": 5,
+          "minimum_management_or_business_discussions": 3,
+          "minimum_adopted_or_decision_influencing_recommendations": 1
+        }
+      },
+      {
+        "level": 4,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 5,
+        "minimumE5": 1,
+        "minimumDistinctScenarios": 4,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_complete_business_projects": 2,
+          "minimum_cross_function_count": 3,
+          "minimum_measurable_business_outcomes": 2,
+          "minimum_formal_project_retrospectives": 2
+        }
+      },
+      {
+        "level": 5,
+        "minimumTotal": 6,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 6,
+        "minimumE4Plus": 4,
+        "minimumE5": 2,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_reusable_frameworks": 2,
+          "minimum_framework_usage_cases_by_others": 2,
+          "minimum_evidence_of_sustained_use_cycles": 1
+        }
+      }
+    ],
+    "finance": [
+      {
+        "level": 1,
+        "minimumTotal": 3,
+        "minimumE2Plus": 1,
+        "minimumE3Plus": 0,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 1,
+        "specialRequirements": {
+          "minimum_real_or_sanitized_financial_analysis": 1
+        }
+      },
+      {
+        "level": 2,
+        "minimumTotal": 6,
+        "minimumE2Plus": 4,
+        "minimumE3Plus": 2,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_real_operating_number_analyses": 3,
+          "must_cover_at_least_two_categories": [
+            "profit",
+            "cash",
+            "inventory",
+            "receivables"
+          ]
+        }
+      },
+      {
+        "level": 3,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 2,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 4,
+        "minimumRealWorldUses": 3,
+        "specialRequirements": {
+          "minimum_financial_decision_models": 3,
+          "minimum_real_business_decision_uses": 2,
+          "minimum_cases_where_analysis_changed_or_materially_influenced_plan": 1
+        }
+      },
+      {
+        "level": 4,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 5,
+        "minimumE5": 1,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_budget_or_economic_responsibility_cycles": 1,
+          "minimum_corrective_action_cases": 2,
+          "minimum_measurable_financial_outcomes": 2
+        }
+      },
+      {
+        "level": 5,
+        "minimumTotal": 6,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 6,
+        "minimumE4Plus": 4,
+        "minimumE5": 2,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_real_resource_allocation_decisions": 2,
+          "minimum_distinct_businesses_or_projects_compared": 2,
+          "minimum_repeatable_allocation_mechanisms": 1
+        }
+      }
+    ],
+    "strategy": [
+      {
+        "level": 1,
+        "minimumTotal": 3,
+        "minimumE2Plus": 1,
+        "minimumE3Plus": 0,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 1,
+        "specialRequirements": {
+          "minimum_real_industry_or_competitor_analysis": 1,
+          "minimum_company_specific_strategic_questions": 1
+        }
+      },
+      {
+        "level": 2,
+        "minimumTotal": 6,
+        "minimumE2Plus": 4,
+        "minimumE3Plus": 2,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_real_strategy_analyses": 3,
+          "minimum_analyses_entering_real_business_discussion": 1
+        }
+      },
+      {
+        "level": 3,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 2,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 4,
+        "minimumRealWorldUses": 3,
+        "specialRequirements": {
+          "minimum_decision_memos": 3,
+          "minimum_management_discussions": 2,
+          "minimum_decisions_materially_influenced": 1,
+          "minimum_explicit_tradeoff_cases": 1
+        }
+      },
+      {
+        "level": 4,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 5,
+        "minimumE5": 1,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_major_strategic_topics_owned": 2,
+          "minimum_real_resource_allocation_cases": 2,
+          "minimum_strategy_adjustment_cases": 1,
+          "requires_measurable_business_outcome": true
+        }
+      },
+      {
+        "level": 5,
+        "minimumTotal": 6,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 6,
+        "minimumE4Plus": 4,
+        "minimumE5": 2,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_strategy_mechanism_cycles": 2,
+          "minimum_major_businesses_or_projects_affected": 2,
+          "minimum_people_independently_using_framework": 1
+        }
+      }
+    ],
+    "execution": [
+      {
+        "level": 1,
+        "minimumTotal": 3,
+        "minimumE2Plus": 2,
+        "minimumE3Plus": 0,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_real_deliveries": 3,
+          "minimum_formal_retrospectives": 2
+        }
+      },
+      {
+        "level": 2,
+        "minimumTotal": 5,
+        "minimumE2Plus": 3,
+        "minimumE3Plus": 2,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_complete_projects": 2,
+          "minimum_projects_with_multi_party_collaboration": 1
+        }
+      },
+      {
+        "level": 3,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 2,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_cross_function_projects": 2,
+          "minimum_functions_per_cross_function_project": 3,
+          "minimum_major_blocker_recovery_cases": 1,
+          "minimum_real_replanning_cases": 1
+        }
+      },
+      {
+        "level": 4,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 5,
+        "minimumE5": 1,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_complex_projects": 2,
+          "minimum_projects_with_major_change_or_crisis": 1,
+          "minimum_measurable_outcomes": 2
+        }
+      },
+      {
+        "level": 5,
+        "minimumTotal": 6,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 6,
+        "minimumE4Plus": 4,
+        "minimumE5": 2,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_projects_using_shared_execution_system": 2,
+          "minimum_independent_project_owners": 2,
+          "minimum_project_cycles": 2
+        }
+      }
+    ],
+    "leadership": [
+      {
+        "level": 1,
+        "minimumTotal": 3,
+        "minimumE2Plus": 1,
+        "minimumE3Plus": 0,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_real_delegations": 5,
+          "minimum_tasks_completed_without_user_direct_execution": 2
+        }
+      },
+      {
+        "level": 2,
+        "minimumTotal": 6,
+        "minimumE2Plus": 4,
+        "minimumE3Plus": 3,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 3,
+        "specialRequirements": {
+          "minimum_formal_feedback_cases": 3,
+          "minimum_continuously_coached_people": 1,
+          "minimum_people_independently_taking_over_previous_user_work": 1
+        }
+      },
+      {
+        "level": 3,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 1,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 4,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_people_with_verified_capability_growth": 1,
+          "minimum_difficult_feedback_cases": 1,
+          "minimum_conflict_management_cases": 1
+        }
+      },
+      {
+        "level": 4,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 5,
+        "minimumE5": 1,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_team_or_work_unit_cycles": 1,
+          "requires_defined_team_goal": true,
+          "requires_performance_management": true,
+          "requires_talent_development": true,
+          "requires_measurable_team_outcome": true
+        }
+      },
+      {
+        "level": 5,
+        "minimumTotal": 6,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 6,
+        "minimumE4Plus": 4,
+        "minimumE5": 2,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_new_independent_leaders_developed": 1,
+          "minimum_management_mechanism_cycles": 2,
+          "requires_stable_results_with_reduced_direct_involvement": true
+        }
+      }
+    ],
+    "influence": [
+      {
+        "level": 1,
+        "minimumTotal": 3,
+        "minimumE2Plus": 1,
+        "minimumE3Plus": 0,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 2,
+        "minimumRealWorldUses": 2,
+        "specialRequirements": {
+          "minimum_real_written_communications": 2,
+          "minimum_real_meeting_communications": 2,
+          "minimum_one_page_executive_summaries": 3
+        }
+      },
+      {
+        "level": 2,
+        "minimumTotal": 6,
+        "minimumE2Plus": 4,
+        "minimumE3Plus": 2,
+        "minimumE4Plus": 0,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 3,
+        "specialRequirements": {
+          "minimum_legal_to_business_cases": 5,
+          "minimum_real_decisions_influenced": 1
+        }
+      },
+      {
+        "level": 3,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 2,
+        "minimumE5": 0,
+        "minimumDistinctScenarios": 4,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_cross_function_influence_cases": 2,
+          "minimum_major_negotiation_or_conflict_cases": 1,
+          "minimum_cases_resulting_in_real_action": 2
+        }
+      },
+      {
+        "level": 4,
+        "minimumTotal": 8,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 5,
+        "minimumE4Plus": 5,
+        "minimumE5": 1,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_executive_decision_memos": 2,
+          "minimum_senior_management_decisions_influenced": 2,
+          "minimum_major_negotiation_or_resource_cases": 2,
+          "minimum_major_decisions_materially_changed": 1
+        }
+      },
+      {
+        "level": 5,
+        "minimumTotal": 6,
+        "minimumE2Plus": 6,
+        "minimumE3Plus": 6,
+        "minimumE4Plus": 4,
+        "minimumE5": 2,
+        "minimumDistinctScenarios": 3,
+        "minimumRealWorldUses": 4,
+        "specialRequirements": {
+          "minimum_unsolicited_non_legal_consultations": 3,
+          "minimum_cross_function_senior_stakeholder_categories": 3,
+          "minimum_repeatable_communication_mechanisms_used_by_others": 1
+        }
+      }
+    ]
+  }
+}
