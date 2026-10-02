@@ -1,0 +1,8 @@
+.article-page:has(.html-report) .reader-panel { width:min(1200px,100%); max-width:1200px; padding-left:24px; padding-right:24px; }
+.html-report { margin-top:28px; min-width:0; }
+.html-report iframe { display:block; width:100%; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.html-report .reader-status { min-height:0; padding:12px; background:#fff8df; border-radius:8px; }
+@media(max-width:600px) {
+  .article-page:has(.html-report) .reader-panel { padding-left:12px; padding-right:12px; }
+  .html-report iframe { border-radius:8px; }
+}

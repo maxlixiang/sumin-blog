@@ -2,11 +2,18 @@ import { lazy, StrictMode, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 import './footer.css'
+import './article-controls.css'
 
 const Markdown = lazy(() => import('./ArticleMarkdown.jsx'))
+const HtmlReport = lazy(() => import('./ArticleHtml.jsx'))
+const emptyCharts = []
 const markdownPreview = import.meta.env.DEV ? {
   id: 'markdown-preview', title: '增强 Markdown 排版预览', category: '本地预览',
   date: '2026.10.02', content: '/docs/markdown-example.md',
+} : null
+const htmlPreview = import.meta.env.DEV ? {
+  id: 'html-preview', title: 'HTML 专题与动态图表预览', category: '本地预览',
+  date: '2026.10.02', format: 'html', content: '/docs/html-example.html', charts: '/docs/html-example.charts.json',
 } : null
 
 function readRoute() {
@@ -61,6 +68,43 @@ const journeyItems = [
 
 function Arrow({ down = false }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d={down ? 'M12 4v15m0 0 6-6m-6 6-6-6' : 'M5 12h14m-6-6 6 6-6 6'} /></svg>
+}
+
+const sourceLabels = { original: '原创', repost: '转载', 'ai-research': 'AI 共研' }
+
+function SourceBadge({ article }) {
+  const label = sourceLabels[article.sourceType]
+  return label ? <span className="article-source">{label}</span> : null
+}
+
+function BackToTop({ pageKey }) {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    let frameId = 0
+    const sync = () => {
+      frameId = 0
+      setVisible(window.scrollY > 400)
+    }
+    const onScroll = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(sync)
+    }
+    sync()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frameId) window.cancelAnimationFrame(frameId)
+    }
+  }, [pageKey])
+
+  const returnToTop = () => {
+    document.querySelector('.brand')?.focus({ preventScroll: true })
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
+  }
+
+  return visible ? <button className="back-to-top" type="button" aria-label="回到顶部" title="回到顶部" onClick={returnToTop}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-6 6 6-6 6 6" /></svg>
+  </button> : null
 }
 
 const navSections = [
@@ -209,7 +253,7 @@ function Hero() {
 
 function ArticleList({ articles }) {
   return <div className="article-list">
-    {articles.map((article, index) => <AppLink className="article" href={`/articles/${encodeURIComponent(article.id)}`} key={article.id}><span className="article-no">{String(index + 1).padStart(2, '0')}</span><div className="article-meta"><time>{article.date}</time><span>{article.category}</span></div><div className="article-body"><h3>{article.title}</h3><p>{article.excerpt}</p></div><span className="round-arrow" aria-hidden="true"><Arrow /></span></AppLink>)}
+    {articles.map((article, index) => <AppLink className="article" href={`/articles/${encodeURIComponent(article.id)}`} key={article.id}><span className="article-no">{String(index + 1).padStart(2, '0')}</span><div className="article-meta"><time>{article.date}</time><span>{article.category}</span><SourceBadge article={article} /></div><div className="article-body"><h3>{article.title}</h3><p>{article.excerpt}</p></div><span className="round-arrow" aria-hidden="true"><Arrow /></span></AppLink>)}
   </div>
 }
 
@@ -221,29 +265,52 @@ function Articles({ articles }) {
 }
 
 function ArticleArchive({ articles }) {
+  const [sourceType, setSourceType] = useState('all')
+  const filteredArticles = sourceType === 'all' ? articles : articles.filter((article) => article.sourceType === sourceType)
   return <main className="archive-page"><section className="archive-shell section">
     <div className="archive-heading"><AppLink href="/#writing" className="back-link"><Arrow /> 返回首页</AppLink><p className="section-kicker">ARCHIVE</p><h1>全部文章</h1><p>按时间收纳写下的行业观察、职业思考和学习记录。</p></div>
-    <ArticleList articles={articles} />
+    <div className="source-filters" role="group" aria-label="按文章来源筛选">
+      {Object.entries({ all: '全部', ...sourceLabels }).map(([value, label]) => <button type="button" key={value} aria-pressed={sourceType === value} onClick={() => setSourceType(value)}>{label}</button>)}
+    </div>
+    <div aria-live="polite" aria-atomic="true" className="filter-summary">共 {filteredArticles.length} 篇{sourceType === 'all' ? '文章' : sourceLabels[sourceType]}</div>
+    {filteredArticles.length > 0 ? <ArticleList articles={filteredArticles} /> : <p className="archive-empty">暂时还没有标注为“{sourceLabels[sourceType]}”的文章。</p>}
   </section></main>
 }
 
 function ArticlePage({ article, articles }) {
   const [markdown, setMarkdown] = useState('')
+  const [charts, setCharts] = useState(emptyCharts)
+  const [chartWarning, setChartWarning] = useState('')
   const [status, setStatus] = useState('loading')
 
   useEffect(() => {
     if (!article) return
     let cancelled = false
     setMarkdown('')
+    setCharts(emptyCharts)
+    setChartWarning('')
     setStatus('loading')
-    fetch(article.content)
-      .then((response) => {
-        if (!response.ok) throw new Error('Article could not be loaded')
-        return response.text()
-      })
-      .then((text) => {
+    const loadText = (url) => fetch(url).then((response) => {
+      if (!response.ok) throw new Error('Article could not be loaded')
+      return response.text()
+    })
+    Promise.all([
+      loadText(article.content),
+      article.format === 'html' && article.charts ? loadText(article.charts).then((text) => {
+        const data = JSON.parse(text)
+        if (!Array.isArray(data) || data.some((item) => !item || !/^[\w-]+$/.test(item.id) || !item.option || typeof item.option !== 'object' || Array.isArray(item.option))) {
+          throw new Error('Invalid chart configuration')
+        }
+        return data
+      }).catch(() => {
+        if (!cancelled) setChartWarning('图表配置暂时无法读取，正文仍可阅读。')
+        return emptyCharts
+      }) : emptyCharts,
+    ])
+      .then(([text, chartData]) => {
         if (!cancelled) {
-          setMarkdown(text.replace(/^\s*#\s+[^\n]+\n+/, ''))
+          setMarkdown(article.format === 'html' ? text : text.replace(/^\s*#\s+[^\n]+\n+/, ''))
+          setCharts(chartData)
           setStatus('ready')
         }
       })
@@ -258,10 +325,14 @@ function ArticlePage({ article, articles }) {
 
   return <main className="article-page"><article className="reader-panel" aria-labelledby="article-title">
       <AppLink href="/articles" className="back-link"><Arrow /> 返回文章列表</AppLink>
-      <header className="reader-header"><p className="section-kicker">{article.category} · {article.date}</p><h1 id="article-title">{article.title}</h1></header>
+      <header className="reader-header"><p className="section-kicker">{article.category} · {article.date} <SourceBadge article={article} /></p><h1 id="article-title">{article.title}</h1>{article.aiAssisted ? <p className="reader-source-note">与 AI 协作完成</p> : null}</header>
       {status === 'loading' && <p className="reader-status">正在载入全文…</p>}
       {status === 'error' && <p className="reader-status">正文载入失败，请稍后再试。</p>}
-      {status === 'ready' ? <div className="reader-content"><Suspense fallback={<p className="reader-status">正在排版正文…</p>}><Markdown>{markdown}</Markdown></Suspense></div> : null}
+      {status === 'ready' ? <Suspense fallback={<p className="reader-status">正在排版正文…</p>}>
+        {article.format === 'html'
+          ? <HtmlReport contentUrl={article.content} title={article.title} charts={charts} warning={chartWarning}>{markdown}</HtmlReport>
+          : <div className="reader-content"><Markdown>{markdown}</Markdown></div>}
+      </Suspense> : null}
       <nav className="article-pagination" aria-label="文章翻页">
         {previousArticle ? <AppLink href={`/articles/${encodeURIComponent(previousArticle.id)}`}><span>上一篇</span><strong>{previousArticle.title}</strong></AppLink> : <span />}
         {nextArticle ? <AppLink href={`/articles/${encodeURIComponent(nextArticle.id)}`}><span>下一篇</span><strong>{nextArticle.title}</strong></AppLink> : <span />}
@@ -301,7 +372,7 @@ function App() {
   }, [])
 
   const activeArticle = route.name === 'article'
-    ? (markdownPreview?.id === route.articleId ? markdownPreview : articles.find(({ id }) => id === route.articleId))
+    ? (markdownPreview?.id === route.articleId ? markdownPreview : htmlPreview?.id === route.articleId ? htmlPreview : articles.find(({ id }) => id === route.articleId))
     : null
   useEffect(() => {
     const pageTitle = activeArticle?.title ?? (route.name === 'archive' ? '全部文章' : route.name === 'not-found' ? '页面未找到' : '')
@@ -314,9 +385,9 @@ function App() {
     window.requestAnimationFrame(() => document.getElementById(hashId)?.scrollIntoView())
   }, [activeArticle, route.name])
 
-  const footer = <footer><div className="footer-inner">© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></div></footer>
+  const footer = <><footer><div className="footer-inner">© {new Date().getFullYear()} 大米的小站 <span>Keep learning, keep growing.</span></div></footer><BackToTop pageKey={`${route.name}:${route.articleId ?? ''}`} /></>
   if (route.name === 'archive') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage /><ArticleArchive articles={articles} />{footer}</>
-  if (route.name === 'article') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage />{articles.length > 0 ? <ArticlePage article={activeArticle} articles={articles} /> : <main className="article-page"><p className="reader-status">正在载入文章…</p></main>}{footer}</>
+  if (route.name === 'article') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage />{articles.length > 0 ? <ArticlePage key={activeArticle?.id} article={activeArticle} articles={articles} /> : <main className="article-page"><p className="reader-status">正在载入文章…</p></main>}{footer}</>
   if (route.name === 'not-found') return <><Header activeSection="writing" onNavigate={setActiveSection} innerPage /><NotFoundPage />{footer}</>
   return <><Header activeSection={activeSection} onNavigate={setActiveSection} /><main><Hero /><Articles articles={articles} /><Journey /><Life /><About /></main>{footer}</>
 }

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "market-chart",
+    "label": "示例市场分布环形图",
+    "description": "演示数据：北美 25、东南亚 20、其他 15。可点击图例切换市场。",
+    "height": 360,
+    "option": {
+      "color": ["#7853d8", "#e0b83e", "#8c82a6"],
+      "tooltip": { "trigger": "item" },
+      "legend": { "bottom": 0 },
+      "series": [{ "type": "pie", "radius": ["40%", "65%"], "label": { "show": false }, "data": [{ "name": "北美", "value": 25 }, { "name": "东南亚", "value": 20 }, { "name": "其他", "value": 15 }] }]
+    },
+    "mobileOption": { "legend": { "bottom": 0, "textStyle": { "fontSize": 11 } } }
+  },
+  {
+    "id": "trend-chart",
+    "label": "示例门店趋势折线图",
+    "description": "演示数据：2023 年 10、2024 年 25、2025 年 40、2026 年 60。",
+    "option": {
+      "color": ["#7853d8"],
+      "tooltip": { "trigger": "axis" },
+      "grid": { "left": 40, "right": 20, "bottom": 30, "top": 24 },
+      "xAxis": { "type": "category", "data": ["2023", "2024", "2025", "2026"] },
+      "yAxis": { "type": "value" },
+      "series": [{ "type": "line", "data": [10, 25, 40, 60], "smooth": false }]
+    }
+  }
+]

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>专题报告示例</title>
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#fff; color:#211c2b; font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif; }
+    header { padding:36px; background:linear-gradient(120deg,#f3edff,#fff9de); }
+    header h1 { margin:8px 0; font-size:30px; line-height:1.4; }
+    .kicker { color:#7853d8; font-size:13px; letter-spacing:.12em; }
+    main { padding:28px 36px; }
+    section { margin-bottom:32px; }
+    h2 { font-size:22px; line-height:1.5; }
+    .metric-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .metric-card { padding:20px; border:1px solid #e6e0ef; border-radius:12px; }
+    .metric-card strong { display:block; color:#7853d8; font-size:28px; }
+    .chart-container { width:100%; height:360px; }
+    .callout { padding:16px; border-left:3px solid #d5ac31; background:#fff8df; }
+    a { color:#7853d8; }
+    table { min-width:640px; width:100%; border-collapse:collapse; }
+    th,td { padding:12px; text-align:left; border:1px solid #e6e0ef; }
+    th { background:#f3edff; }
+    @media(max-width:640px) { header,main { padding:24px 16px; } header h1 { font-size:24px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="kicker">专题报告 · 排版示例</span>
+    <h1>从文字到数据：一份可以交互的专题报告</h1>
+    <p>以下数字为演示数据，用于检查 HTML、表格、动态图表与移动端排版。</p>
+    <a href="#sources">查看数据说明</a>
+  </header>
+  <main>
+    <section>
+      <h2>一、核心指标</h2>
+      <div class="metric-row">
+        <div class="metric-card"><strong>60</strong>示例门店</div>
+        <div class="metric-card"><strong>3</strong>示例市场</div>
+        <div class="metric-card"><strong>持续观察</strong>研究状态</div>
+      </div>
+    </section>
+    <section>
+      <h2>二、市场布局</h2>
+      <p>悬停或触摸查看数值，点击图例切换系列。</p>
+      <div id="market-chart" class="chart-container">北美 25、东南亚 20、其他 15。</div>
+    </section>
+    <section>
+      <h2>三、发展趋势</h2>
+      <div id="trend-chart" class="chart-container">2023 年 10、2024 年 25、2025 年 40、2026 年 60。</div>
+    </section>
+    <section>
+      <h2>四、复杂表格</h2>
+      <table>
+        <thead><tr><th rowspan="2">市场</th><th colspan="2">经营观察</th><th rowspan="2">备注</th></tr><tr><th>规模</th><th>模式</th></tr></thead>
+        <tbody><tr><td>北美</td><td>25</td><td>合作经营</td><td>需要确认合同与执行机制</td></tr><tr><td>东南亚</td><td>20</td><td>当地合作</td><td>持续观察产品与供应链</td></tr></tbody>
+      </table>
+    </section>
+    <section id="sources">
+      <h2>数据说明</h2>
+      <div class="callout">演示页面未用于发布真实调研结论。图表数据以独立 JSON 文件保存。</div>
+      <p><a href="https://echarts.apache.org/handbook/en/concepts/chart-size/">ECharts 官方尺寸说明</a></p>
+    </section>
+  </main>
+</body>
+</html>

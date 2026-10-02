@@ -1,0 +1,35 @@
+.article-source,.article-meta .article-source {
+  display:inline-block; width:max-content; max-width:100%; padding:3px 8px;
+  border:1px solid #e1d8f6; border-radius:999px;
+  background:var(--soft-violet); color:#6043a1;
+  font-family:'Noto Sans SC',system-ui,sans-serif; font-size:11px; line-height:1.5; letter-spacing:0;
+}
+.reader-header .section-kicker { display:flex; align-items:center; flex-wrap:wrap; gap:10px; }
+.reader-source-note { margin:16px 0 0; color:var(--muted); font-size:13px; }
+.source-filters { display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
+.source-filters button {
+  min-height:44px; padding:10px 18px; border:1px solid var(--line); border-radius:999px;
+  background:#fff; color:var(--muted); font:inherit; font-size:13px; cursor:pointer;
+  transition:color var(--motion-fast) var(--ease-out),background-color var(--motion-fast) var(--ease-out),border-color var(--motion-fast) var(--ease-out);
+}
+.source-filters button[aria-pressed="true"] { color:#6043a1; background:var(--soft-violet); border-color:#b7a4e4; }
+.filter-summary { margin-top:18px; color:var(--muted); font-size:12px; }
+.archive-shell .article-list { margin-top:24px; }
+.archive-empty { padding:40px 0; color:var(--muted); font-size:14px; border-top:1px solid var(--line); line-height:1.8; }
+.back-to-top {
+  position:fixed; z-index:15; right:calc(24px + env(safe-area-inset-right,0px)); bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  display:grid; place-items:center; width:48px; height:48px; padding:0;
+  border:1px solid #d8cdef; border-radius:50%; background:#fff; color:#6043a1;
+  box-shadow:0 4px 18px rgb(45 37 70 / .12); cursor:pointer;
+  transition:color var(--motion-fast) var(--ease-out),background-color var(--motion-fast) var(--ease-out),transform var(--motion-fast) var(--ease-out);
+}
+.back-to-top svg { width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+@media (hover:hover) and (pointer:fine) {
+  .source-filters button:hover { color:#6043a1; border-color:#b7a4e4; }
+  .back-to-top:hover { color:#fff; background:#6043a1; transform:translateY(-2px); }
+}
+@media (max-width:820px) {
+  .article-meta { align-items:center; }
+  .back-to-top { right:calc(16px + env(safe-area-inset-right,0px)); bottom:calc(16px + env(safe-area-inset-bottom,0px)); }
+}
+@media (prefers-reduced-motion:reduce) { .back-to-top:hover { transform:none; } }

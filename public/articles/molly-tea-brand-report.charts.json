@@ -1,0 +1,49 @@
+[
+  {
+    "id": "chart-overseas",
+    "label": "海外市场分布：北美约25家、东南亚约12家、澳大利亚约10家、英国约5家、其他约8家",
+    "height": 360,
+    "option": {
+      "animation": false,
+      "tooltip": {
+        "trigger": "item",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "rgba(26, 43, 42, 0.1)",
+        "borderWidth": 1,
+        "textStyle": { "color": "#687A79", "fontSize": 12 },
+        "formatter": "{b}\n门店数：约 {c} 家"
+      },
+      "legend": {
+        "orient": "vertical", "right": 20, "top": "center",
+        "textStyle": { "color": "#687A79", "fontSize": 12 },
+        "itemWidth": 14, "itemHeight": 10
+      },
+      "series": [{
+        "name": "海外市场分布", "type": "pie", "radius": ["40%", "70%"], "center": ["38%", "50%"],
+        "avoidLabelOverlap": true,
+        "itemStyle": { "borderRadius": 4, "borderColor": "#fff", "borderWidth": 2 },
+        "label": { "show": false },
+        "emphasis": { "label": { "show": true, "fontSize": 13, "fontWeight": "bold", "color": "#687A79" } },
+        "data": [
+          { "value": 25, "name": "北美（美国+加拿大）", "itemStyle": { "color": "#12B886" } },
+          { "value": 12, "name": "东南亚（泰/印尼/新）", "itemStyle": { "color": "#228BE6" } },
+          { "value": 10, "name": "澳大利亚", "itemStyle": { "color": "#7950F2" } },
+          { "value": 5, "name": "英国", "itemStyle": { "color": "#E64980" } },
+          { "value": 8, "name": "其他", "itemStyle": { "color": "#D1E0DD" } }
+        ]
+      }],
+      "graphic": [
+        { "type": "text", "left": "38%", "top": "45%", "style": { "text": "约60家", "textAlign": "center", "fill": "#687A79", "fontSize": 18, "fontWeight": "bold" } },
+        { "type": "text", "left": "38%", "top": "55%", "style": { "text": "海外门店总数", "textAlign": "center", "fill": "#687A79", "fontSize": 11 } }
+      ]
+    },
+    "mobileOption": {
+      "legend": { "orient": "horizontal", "left": "center", "right": "auto", "top": "auto", "bottom": 0, "textStyle": { "color": "#687A79", "fontSize": 10 }, "itemWidth": 12, "itemHeight": 8 },
+      "series": [{ "center": ["50%", "40%"], "radius": ["32%", "56%"] }],
+      "graphic": [
+        { "type": "text", "left": "center", "top": "34%", "style": { "text": "约60家", "textAlign": "center", "fill": "#687A79", "fontSize": 18, "fontWeight": "bold" } },
+        { "type": "text", "left": "center", "top": "44%", "style": { "text": "海外门店总数", "textAlign": "center", "fill": "#687A79", "fontSize": 11 } }
+      ]
+    }
+  }
+]

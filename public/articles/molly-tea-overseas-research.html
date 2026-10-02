@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茉莉奶白品牌调研 · 出海专题（截至 2026 年 9 月）</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1c2027; --ink-2:#4a5260; --ink-3:#7b8493;
+    --line:#e4e8ee; --accent:#5a7d52; --accent-soft:#eef4ec;
+    --up:#c0392b; --down:#1f8a52; --blue:#3a6ea5; --amber:#c98a12; --purple:#7a5aa8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+    line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px 80px}
+
+  header{background:linear-gradient(135deg,#ffffff 0%,#f2f7f0 100%);
+    border-bottom:1px solid var(--line);padding:56px 24px 44px;margin-bottom:36px}
+  header .inner{max-width:1000px;margin:0 auto}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:.18em;color:var(--accent);
+    background:var(--accent-soft);padding:5px 12px;border-radius:3px;margin-bottom:18px}
+  h1{font-size:32px;line-height:1.35;font-weight:700;letter-spacing:-.01em}
+  h1 small{display:block;font-size:15px;font-weight:400;color:var(--ink-3);margin-top:12px;letter-spacing:0}
+  .meta{margin-top:22px;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:16px}
+
+  section{margin-bottom:44px}
+  h2{font-size:21px;font-weight:700;margin-bottom:6px;padding-left:12px;
+    border-left:4px solid var(--accent);line-height:1.4}
+  .sub{font-size:13px;color:var(--ink-3);margin:0 0 20px 16px}
+  h3{font-size:16px;font-weight:600;margin:26px 0 10px;color:var(--ink)}
+  p{margin:10px 0;color:var(--ink-2)}
+  p strong,li strong{color:var(--ink);font-weight:600}
+  ul{margin:10px 0 10px 20px;color:var(--ink-2)}
+  li{margin:6px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;margin:16px 0}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 16px}
+  .kpi .num{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  .kpi .lbl{font-size:12px;color:var(--ink-3);margin-top:6px}
+  .kpi .note{font-size:11px;color:var(--ink-3);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+
+  .tablewrap{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+  th{background:#fafbfc;text-align:left;padding:12px 14px;font-weight:600;color:var(--ink);
+    border-bottom:1px solid var(--line);white-space:nowrap;font-size:13px}
+  td{padding:11px 14px;border-bottom:1px solid #f0f2f5;color:var(--ink-2);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#fcfcfd}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:var(--up);font-weight:600}
+  .down{color:var(--down);font-weight:600}
+
+  .bars{margin:18px 0}
+  .bar-row{display:grid;grid-template-columns:120px 1fr 116px;align-items:center;gap:12px;margin:9px 0;font-size:13px}
+  .bar-label{color:var(--ink-2);text-align:right;white-space:nowrap}
+  .bar-track{background:#f0f2f5;border-radius:3px;height:22px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:3px;background:var(--accent);opacity:.82}
+  .bar-fill.blue{background:var(--blue)}
+  .bar-fill.amber{background:var(--amber)}
+  .bar-val{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;font-size:12.5px}
+
+  .callout{background:#f2f7f0;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;
+    padding:16px 18px;margin:18px 0;font-size:14px;color:var(--ink-2)}
+  .callout .t{font-weight:700;color:var(--accent);margin-bottom:6px;font-size:13.5px}
+  .warn{background:#fdf6f6;border-left-color:var(--up)}
+  .warn .t{color:var(--up)}
+  .good{background:#f2faf6;border-left-color:var(--down)}
+  .good .t{color:var(--down)}
+  .note-box{background:#fafbfc;border-left-color:var(--ink-3)}
+  .note-box .t{color:var(--ink-2)}
+
+  .tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:3px;
+    background:#eef1f5;color:var(--ink-2);margin:2px 4px 2px 0}
+  .tag.red{background:#fbeceb;color:var(--up)}
+  .tag.green{background:#eaf6ef;color:var(--down)}
+  .tag.blue{background:#ebf1f8;color:var(--blue)}
+
+  .tl{position:relative;padding-left:22px;margin:18px 0}
+  .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .tl-item{position:relative;margin-bottom:18px}
+  .tl-item::before{content:"";position:absolute;left:-21px;top:8px;width:9px;height:9px;border-radius:50%;
+    background:var(--accent);border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+  .tl-item.bad::before{background:var(--up)}
+  .tl-date{font-size:12px;color:var(--accent);font-weight:600}
+  .tl-item.bad .tl-date{color:var(--up)}
+  .tl-body{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  .mini{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px}
+  .mini h4{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--ink)}
+  .mini ul{margin-left:16px;font-size:13px}
+  .mini li{margin:5px 0}
+
+  .src{font-size:12px;color:var(--ink-3);margin-top:10px}
+  footer{border-top:1px solid var(--line);margin-top:50px;padding-top:24px;font-size:12.5px;color:var(--ink-3);line-height:1.9}
+  .disc{background:#fafbfc;border:1px dashed var(--line);border-radius:6px;padding:16px 18px;
+    font-size:12.5px;color:var(--ink-3);margin-top:20px}
+
+  @media(max-width:760px){
+    .kpi-grid{grid-template-columns:repeat(2,1fr)}
+    .two-col{grid-template-columns:1fr}
+    h1{font-size:24px}
+    .bar-row{grid-template-columns:88px 1fr 96px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <span class="kicker">品牌调研 · 新茶饮 · 出海专题</span>
+    <h1>茉莉奶白（Molly Tea）品牌调研
+      <small>从深圳单店到 2,500 家门店的黑马路径 —— 以及一场代价高昂的出海实验</small>
+    </h1>
+    <div class="meta">
+      完成时间：2026 年 10 月 ｜ 数据基准：截至 2026 年 9 月<br>
+      主要来源：南方日报、澎湃新闻、央视网财经、光明网、中国新闻网、中国日报、红餐大数据、窄门餐眼、壹览商业、美国纽约南区联邦法院公开案件信息、品牌官方披露
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 摘要 -->
+<section>
+  <h2>一、一句话画像</h2>
+  <p class="sub">行业里增速最快的黑马，也是出海踩坑最深的一家。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="num">2,500+</div>
+      <div class="lbl">全球门店（2026 年中）</div>
+      <div class="note">2025.2–2026.1 净增 1,100+ 家，增长率 101.3%，居新茶饮第一梯队</div>
+    </div>
+    <div class="kpi">
+      <div class="num">35.54<span style="font-size:14px;font-weight:500"> 亿</span></div>
+      <div class="lbl">2026H1 全渠道 GMV</div>
+      <div class="note">同比 <span class="up">+73.48%</span>；2025 全年营收约 40 亿元</div>
+    </div>
+    <div class="kpi">
+      <div class="num">7 国 / 55–60 店</div>
+      <div class="lbl">海外布局峰值</div>
+      <div class="note">美国纠纷后纽约、洛杉矶各仅剩 1 家合规门店</div>
+    </div>
+    <div class="kpi">
+      <div class="num">1,030<span style="font-size:14px;font-weight:500"> 万</span></div>
+      <div class="lbl">LV 商标案一审判赔</div>
+      <div class="note">叠加美国诉讼索赔 500 万美元，双重法律成本</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="t">三个核心判断</div>
+    <ul style="margin-bottom:0">
+      <li><strong>卡位成功。</strong>"花香茶饮"是一个真实存在的空白赛道——所有品牌都在用茉莉花茶做茶底，但没谁把它当核心卖点。茉莉奶白用 6 年做到 40 亿营收，验证了细分品类可以做成大生意。</li>
+      <li><strong>出海选了一条最难也最快的路。</strong>与绝大多数品牌"东南亚首站"不同，茉莉奶白首站直取美国，拿到了法拉盛首店月均 50 万美元的行业标杆成绩，但也因此撞上了最成熟的特许经营法律体系。</li>
+      <li><strong>代价是"速度优先"模式的总清算。</strong>轻资产授权换来了扩张速度，却让总部与一线经营者之间缺少稳固的信任与控制机制。美国 5 家核心门店集体决裂、英国伦敦门店与房东冲突、国内 LV 商标判赔千万——三件事看似独立，实则同源。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 品牌基本盘 -->
+<section>
+  <h2>二、品牌基本盘：从深圳宝安到全国</h2>
+
+  <h3>创始团队与定位</h3>
+  <p>2021 年 2 月，茉莉奶白在深圳宝安开出首店。创始人<strong>张伯丞</strong>是涉足过中餐、烘焙、饮品的餐饮老兵（2017 年创立过"我是酸奶君"），联合创始人<strong>高芸晞</strong>从香港金融机构辞职加入，另一位创始人<strong>苏晨</strong>有 5 年地产开发 + 3 年茶饮从业经验。</p>
+  <p>当时的深圳已有喜茶、奈雪两大本土品牌。三人判断：水果茶和奶茶赛道拥挤，但<strong>茉莉花茶一直被忽视——几乎所有品牌都在用它做茶底，却没人把它当核心卖点</strong>。为避开喜茶、奈雪 25–30 元价格带，茉莉奶白定价 15–20 元，主打都市白领日常消费。</p>
+
+  <h3>扩张节奏：先慢后快</h3>
+  <div class="card">
+    <svg viewBox="0 0 860 240" style="width:100%;height:auto">
+      <line x1="60" y1="190" x2="820" y2="190" stroke="#dfe3e9" stroke-width="1"/>
+      <!-- axis labels -->
+      <text x="130" y="210" text-anchor="middle" font-size="11" fill="#7b8493">2021.2</text>
+      <text x="250" y="210" text-anchor="middle" font-size="11" fill="#7b8493">2022 底</text>
+      <text x="360" y="210" text-anchor="middle" font-size="11" fill="#7b8493">2023.12</text>
+      <text x="470" y="210" text-anchor="middle" font-size="11" fill="#7b8493">2024.10</text>
+      <text x="590" y="210" text-anchor="middle" font-size="11" fill="#7b8493">2025.11</text>
+      <text x="710" y="210" text-anchor="middle" font-size="11" fill="#7b8493">2026.6</text>
+
+      <!-- line: scale max 2600 -> height 150 -->
+      <polyline points="130,183 250,180 300,170 360,160 420,150 470,138 520,120 590,105 650,88 710,72"
+        fill="none" stroke="#5a7d52" stroke-width="2.5" stroke-linecap="round"/>
+
+      <circle cx="130" cy="183" r="4" fill="#5a7d52"/>
+      <text x="130" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#5a7d52">1</text>
+
+      <circle cx="250" cy="180" r="4" fill="#5a7d52"/>
+      <text x="250" y="169" text-anchor="middle" font-size="11" font-weight="700" fill="#5a7d52">60</text>
+      <text x="250" y="228" text-anchor="middle" font-size="10.5" fill="#9aa2ae">全直营，打磨模型</text>
+
+      <circle cx="360" cy="160" r="4" fill="#3a6ea5"/>
+      <text x="360" y="149" text-anchor="middle" font-size="11" font-weight="700" fill="#3a6ea5">300</text>
+      <text x="360" y="228" text-anchor="middle" font-size="10.5" fill="#9aa2ae">4 月开放加盟</text>
+
+      <circle cx="470" cy="138" r="4" fill="#3a6ea5"/>
+      <text x="470" y="127" text-anchor="middle" font-size="11" font-weight="700" fill="#3a6ea5">785</text>
+      <text x="470" y="228" text-anchor="middle" font-size="10.5" fill="#9aa2ae">获阿里近亿元融资</text>
+
+      <circle cx="590" cy="105" r="4" fill="#3a6ea5"/>
+      <text x="590" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="#3a6ea5">2,000</text>
+
+      <circle cx="710" cy="72" r="4" fill="#c98a12"/>
+      <text x="710" y="61" text-anchor="middle" font-size="11" font-weight="700" fill="#c98a12">2,500+</text>
+
+      <!-- phase band -->
+      <rect x="95" y="196" width="170" height="0" fill="none"/>
+      <text x="60" y="36" font-size="12" fill="#7b8493">门店数（家，非等距时间轴示意）</text>
+      <rect x="95" y="46" width="10" height="10" fill="#5a7d52" rx="2"/>
+      <text x="112" y="55" font-size="11" fill="#7b8493">直营期（克制）</text>
+      <rect x="215" y="46" width="10" height="10" fill="#3a6ea5" rx="2"/>
+      <text x="232" y="55" font-size="11" fill="#7b8493">加盟扩张期</text>
+      <rect x="335" y="46" width="10" height="10" fill="#c98a12" rx="2"/>
+      <text x="352" y="55" font-size="11" fill="#7b8493">规模冲刺 + 出海</text>
+    </svg>
+  </div>
+  <p class="src">门店数据为各时点公开披露值，不同来源口径存在差异（国内 2,347 家 @2026-05-13 窄门餐眼；2,579 家 @2026-06 红餐，覆盖 29 省 286 城；全球 2,400+ @2026-05、2,500+ @2026-06）。</p>
+
+  <div class="two-col">
+    <div class="mini">
+      <h4>直营期（2021–2022）：克制的价值</h4>
+      <ul>
+        <li>两年只开 60 家店，全部直营，聚焦华南渗透</li>
+        <li>单店月均销售额做到 40 多万元</li>
+        <li>2021 年 8 月单品销量达 50 万杯</li>
+        <li>2022 年底年销量 1,000 万杯</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>加盟期（2023 起）：规模即壁垒</h4>
+      <ul>
+        <li>2023 年 4 月开放加盟，上海首店为外区首家</li>
+        <li>2023：6 月 100 家 → 9 月 200 家 → 12 月 300 家</li>
+        <li>2024：7 月 600 家 → 10 月 785 家</li>
+        <li>加盟商筛选"3+2 打分制"：商业资源、团队、抗风险能力 + 认同价值观</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>经营数据（2026 上半年）</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>指标</th><th class="num">数值</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td>全渠道 GMV</td><td class="num">35.54 亿元</td><td>同比 <span class="up">+73.48%</span>，在行业普遍降速背景下极为亮眼</td></tr>
+        <tr><td>2025 全年营收</td><td class="num">约 40 亿元</td><td>LV 商标案判决书中明确认定</td></tr>
+        <tr><td>立秋单日 GMV</td><td class="num">超 7,300 万元</td><td>单日销量超 365 万杯，店均 2.76 万杯，新增会员 28 万</td></tr>
+        <tr><td>五一假期</td><td class="num">售出 545 万杯</td><td>全国 2,400 家门店营业额环比节前 <span class="up">+30%</span></td></tr>
+        <tr><td>春节假期</td><td class="num">GMV 同比 <span class="up">+130%</span></td><td>部分门店环比节前增幅高达 790%</td></tr>
+        <tr><td>月度上新</td><td class="num">4–5 款</td><td>2025 年全年推出新品近 60 款</td></tr>
+        <tr><td>《恋与深空》联名</td><td class="num">16 亿曝光</td><td>首发 72 小时，小红书茶咖行业第一；2,575 万互动、34 万新发笔记</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>时趣洞察品牌社交影响力指数中，茉莉奶白位列<strong>茶饮品类第 1</strong>；2026 年第八届 iSEE 全球奖获"年度最具价值创新品牌"。品牌声量端确实是上半年行业最大赢家之一。</p>
+
+  <h3>融资</h3>
+  <p>共三轮融资，最新一轮为 <strong>2024 年 10 月阿里本地生活（饿了么）领投的近亿元战略融资</strong>，彼时门店 785 家，单店月均营收 30–40 万元，上半年业绩增速超 400%。历史投资方还包括水滴资产。</p>
+</section>
+
+<!-- 产品与打法 -->
+<section>
+  <h2>三、产品与品牌打法</h2>
+
+  <div class="two-col">
+    <div class="mini">
+      <h4>品类卡位</h4>
+      <ul>
+        <li>核心：<strong>花香茶</strong>（茉莉 → 栀子、白兰、桂花）</li>
+        <li>大单品：针王苹果、针王橘子（首日 60.7 万杯）</li>
+        <li>2026 新概念：<strong>"漂亮水"</strong>贯穿全线产品</li>
+        <li>咖啡：2,300+ 门店上"摩登果咖"特调，两款新品 8 小时卖超 21 万杯，20 元档</li>
+        <li>2025 年新茶饮爆款"柠檬奶"跟进者之一</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>品牌资产</h4>
+      <ul>
+        <li>美学：<strong>"东方摩登"</strong>，粉白配色门店空间</li>
+        <li>IP：小茉莉（花苞头、大眼睛少女形象）</li>
+        <li>店型：茶坊店、香薰概念店、黑金店、"飞鸟亭"主题店</li>
+        <li>周边：香氛喷雾、香包挂件、香薰蜡烛</li>
+        <li>联名：上美影、加菲猫、蜷川实花、NBA 布鲁克林篮网、酷洛米、《恋与深空》</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>供应链：慢功夫是真投入</h3>
+  <ul>
+    <li><strong>广西横州</strong>搭建茉莉花直供渠道，甄选优质双瓣茉莉</li>
+    <li><strong>贵州</strong>布局自建茶园</li>
+    <li>联动国内头部乳企<strong>定制专属鲜奶原料</strong></li>
+    <li>坚守古法窨制工艺，摒弃工业香精调味（成本更高但风味纯净）</li>
+  </ul>
+  <p>这套供应链是茉莉奶白敢在 15–25 元价格带打品质牌的底气，也是它区别于同价格带竞品的实质差异点。</p>
+
+  <h3>2026 年新动作：小店模型</h3>
+  <p>2 月官宣开店新政（建店成本优化、设备回收机制、多店优惠），8 月 1 日正式推出 <strong>20–30㎡ 小店模型</strong>面向全国招商，定位"大店做旗、小店织网"——用低门槛店型填补高线城市写字楼大堂、商场中岛、社区底商等"大店进不去、小品牌撑不住"的空白点位。</p>
+</section>
+
+<!-- ============ 出海（重点） ============ -->
+<section>
+  <h2>四、出海全景</h2>
+  <p class="sub">本章为本次调研重点。</p>
+
+  <h3>4.1 路径选择：反常识的"美国首站"</h3>
+  <div class="callout">
+    <div class="t">为什么先打美国</div>
+    <p style="margin:0">绝大多数中国茶饮品牌出海首站选东南亚（文化近、成本低、验证容易）。茉莉奶白 2023 年底开始探索出海时<strong>首站直接选美国</strong>，理由是当地消费力强、高端饮品基础成熟。这个选择带来了行业标杆级的开局数据，也埋下了后续冲突的种子——它同时意味着要直面全球最成熟、对特许经营监管最严的市场。</p>
+  </div>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-date">2023 年 12 月</div>
+      <div class="tl-body">与纽约合作方 MHL NY LLC 签署品牌授权协议，<strong>总部持股 35%</strong>。海外首店落址纽约法拉盛。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2024 年 4 月</div>
+      <div class="tl-body"><strong>纽约法拉盛店开业</strong>，首月 GMV 突破 <strong>310 万元人民币</strong>，此后月均稳定约 350 万元。另一口径：开业首年月均 GMV 稳定在 <strong>50 万美元</strong>、日均出杯约 2,000 杯——<strong>远超当地中国茶饮品牌 15–30 万美元的平均水平</strong>，被称为北美新茶饮"神话"。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2024 年全年</div>
+      <div class="tl-body">海外落成 <strong>9 家门店</strong>。随后进入加拿大、澳大利亚。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2025 年 2–3 月</div>
+      <div class="tl-body">进入英国：伦敦中国城店（2 月 7 日，英国首店，全球第 10 家海外门店）、伯明翰 High Street 店（3 月 6 日）。同年进入印度尼西亚。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2026 年 1 月</div>
+      <div class="tl-body"><strong>（关键合规节点）</strong>茉莉奶白才完成<strong>美国特许经营备案</strong>——距离首家纽约门店开业已近两年。这是后来被反复引用的"先上车、后补票"证据。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2026 年 3 月</div>
+      <div class="tl-body"><strong>新加坡首店</strong>（乌节中央广场 Orchard Central，约 130㎡）开业，前三日累计销量超 <strong>18,000 杯</strong>，单日最高 <strong>6,300 余杯</strong>，刷新品牌海外单店开业销售纪录。5 月在 Singapore Land Tower 开设第二家（品牌全球最大 CBD 门店）。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2026 年 5 月末</div>
+      <div class="tl-body">据壹览商业，全球海外门店共 <strong>55 家</strong>；品牌口径称全球门店超 2,400 家、海外近 60 家，覆盖 <strong>7 个国家</strong>（美国、加拿大、澳大利亚、英国、泰国、印尼、新加坡）。总部组建超 80 人海外团队，采取"跨境 + 本地"供应链策略。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 6 月 11 日</div>
+      <div class="tl-body"><strong>美国危机爆发</strong>：宣布终止与纽约 4 家 + 洛杉矶圣盖博共 5 家核心门店的合作（详见 4.3）。此后纽约、洛杉矶各仅保留 1 家合规门店运营。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 8 月</div>
+      <div class="tl-body">伦敦门店与房东 Seewoo 矛盾激化，门店被清空（详见 4.4）。</div>
+    </div>
+  </div>
+
+  <h3>4.2 各市场表现一览</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>市场</th><th>进入时间</th><th class="num">门店</th><th>关键表现与状态</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>美国</strong><br><span class="tag red">危机市场</span></td><td>2024.4</td><td class="num">峰值 20+<br>现 2 家</td>
+          <td>法拉盛首店月均 50 万美元、日均 2,000 杯，行业标杆。<strong>2026 年 6 月与纽约合作方决裂</strong>，5 家核心门店摘牌停业，涉事门店改挂"?Tea"。原计划 2026 年北美开到 80–100 家，节奏被打乱。品牌称美国仍是战略重心，下半年将在纽约落地新直营门店。</td>
+        </tr>
+        <tr>
+          <td><strong>新加坡</strong><br><span class="tag green">最优表现</span></td><td>2026.3</td><td class="num">2 家</td>
+          <td>首店前三日 18,000 杯、单日峰值 6,300 杯，<strong>刷新品牌海外单店开业纪录</strong>；5 月开出全球最大 CBD 门店。本地社交媒体排队热度高。</td>
+        </tr>
+        <tr>
+          <td><strong>英国</strong><br><span class="tag red">纠纷</span></td><td>2025.2</td><td class="num">2 家</td>
+          <td>伦敦中国城店（英国首店、全球第 10 家海外店）、伯明翰店。<strong>2026 年 8 月伦敦门店因与房东矛盾被清空</strong>，对方明确禁止品牌方重新进入。</td>
+        </tr>
+        <tr><td><strong>加拿大</strong></td><td>2024–25</td><td class="num">—</td><td>早期跟随美国进入，规模较小，无公开负面事件。</td></tr>
+        <tr><td><strong>澳大利亚</strong></td><td>2024–25</td><td class="num">—</td><td>同上。</td></tr>
+        <tr><td><strong>泰国</strong></td><td>2025</td><td class="num">—</td><td>东南亚市场，规模未披露。</td></tr>
+        <tr><td><strong>印度尼西亚</strong></td><td>2025</td><td class="num">—</td><td>东南亚市场，规模未披露。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src">门店数为公开披露的峰值或时点数；多数市场未单独披露门店数，合计海外门店在 2026 年 5–6 月为 55–60 家区间。</p>
+
+  <h3>4.3 深潜：美国市场从标杆到决裂</h3>
+  <p>这是中国新茶饮出海至今<strong>公开信息最完整的一场品牌方与海外合作方的决裂</strong>，值得逐条拆解。</p>
+
+  <div class="callout warn">
+    <div class="t">股权比例的三次剧变</div>
+    <table style="min-width:0;width:100%;font-size:13px;margin-top:6px">
+      <tbody>
+        <tr><td style="padding:5px 0;border:none">2023 年 12 月 签授权协议</td><td style="padding:5px 0;border:none;text-align:right"><strong>总部持股 35%</strong></td></tr>
+        <tr><td style="padding:5px 0;border:none">2025 年 7 月 新增哥大店签合资协议</td><td style="padding:5px 0;border:none;text-align:right"><strong>MHL 80.1% / 总部 19.9%</strong></td></tr>
+        <tr><td style="padding:5px 0;border:none">2026 年 3 月 总部要求调整</td><td style="padding:5px 0;border:none;text-align:right"><strong>要求拿回 70% → 遭拒</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px">从 35% 到 19.9% 再到试图拿回 70%，这条曲线折射出品牌方在"放权拓荒"与"收权控盘"之间的摇摆。早期依赖本地合作方低成本开拓，当门店月均营收做到 50 万美元成了"现金牛"后，控制权与利益分配矛盾必然爆发。</p>
+  </div>
+
+  <div class="tl">
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 4 月 3 日</div>
+      <div class="tl-body">总部发出"茉莉奶白通知（2026）03 号"文件，对纽约、洛杉矶 5 家门店发出<strong>无限期停业整顿</strong>通知，并中断运营支持、切断供应链/物流/POS 系统、关停社媒与外卖平台账号。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 4 月 16 日</div>
+      <div class="tl-body">合作方 <strong>MHL NY LLC 在纽约州法院起诉</strong>茉莉奶白总部。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 5 月 15 日</div>
+      <div class="tl-body">茉莉奶白深圳总部联合美国关联公司，向<strong>纽约南区联邦法院</strong>反诉 MHL NY LLC、Molly Tea NYC Inc. 等，<strong>索赔超 500 万美元</strong>，指控商标侵权。诉状长达数十页，指控合作方：私自设立未经核准的新实体并签下哥大门店租约（账外扩张）、擅自更换供应链原料、违规篡改标准制作流程、未按时缴纳品牌使用费。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 6 月 8 日</div>
+      <div class="tl-body">纽约南区联邦法院批准品牌方申请的<strong>初步禁令</strong>，禁止被告在诉讼期间使用"Molly Tea"/"茉莉奶白"名称、商标、LOGO 及一切知识产权，覆盖所有社媒、外卖平台及 mollyteany 网站。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 6 月 11 日</div>
+      <div class="tl-body">品牌发布公告，<strong>正式终止 5 家门店授权</strong>：纽约法拉盛、布鲁克林、曼哈顿唐人街、哥伦比亚大学店 + 洛杉矶圣盖博店。其中哥大店被认定为<strong>从未获得授权的侵权门店</strong>。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 6 月 23 日</div>
+      <div class="tl-body">法院发布<strong>修订版禁令</strong>，进一步强化限制。涉事门店为规避禁令，将招牌改为问号形态"<strong>?Tea</strong>"，纽约街头一夜出现多家无标茶饮门店。门店停业导致海外消费者储值卡无法使用，总部随后开放退款通道并保留会员积分。</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="mini">
+      <h4>品牌方说法</h4>
+      <ul>
+        <li>合作方长期拒绝配合总部沟通</li>
+        <li>门店运营品质不达标，脱离标准化品控体系</li>
+        <li>私自替换原料，损害 Molly Tea 商标商誉</li>
+        <li>账外扩张、绕开合资框架</li>
+        <li>"并非全面退出美国市场，是存量乱象清理"</li>
+      </ul>
+    </div>
+    <div class="mini">
+      <h4>合作方说法</h4>
+      <ul>
+        <li>海外首店由自己一手操办，承担了拓荒风险</li>
+        <li>总部在门店做起来后"过河拆桥"</li>
+        <li>单方面要求更改股权比例、转让租约、收回运营控制权及员工管理权</li>
+        <li>谈判破裂后被断货、关账号，被迫停业</li>
+        <li>把品牌从无人问津做到月均 GMV 50 万美元</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="t">这不是孤例，是模式病</div>
+    <p style="margin:0">2024 年初，<strong>霸王茶姬新加坡 12 家主力加盟门店集体脱离品牌体系</strong>，统一更名"Amps tea 与茶"，选址、装修、产品体系基本保留原版——典型的加盟商做大后"割据自立"。瑞幸则在泰国被 50R 集团恶意抢注商标，打了 5 年官司才在 2025 年 3 月终审胜诉。法律评论员尊龙的判断是：茉莉奶白案"不是一场普通的加盟纠纷，也不是单纯的商标侵权争议，它暴露的是<strong>中国品牌出海过程中海外治理结构失衡</strong>的深层问题"。</p>
+  </div>
+
+  <h3>4.4 英国：伦敦门店风波</h3>
+  <p>2026 年 8 月，茉莉奶白伦敦门店与房东 <strong>Seewoo</strong> 矛盾激化，门店被清空。Seewoo 对全部遗留物品进行了拍照及书面记录形成完整清单，并明确声明：未经同意茉莉奶白方不得以任何方式尝试重新进入该店铺，任何未经授权的进入均将被视为非法侵入。英国市场目前仅 2 家门店（伦敦中国城、伯明翰），这一事件的实质影响有限，但进一步印证了海外属地关系管理的薄弱。</p>
+
+  <h3>4.5 出海模式诊断</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>维度</th><th>茉莉奶白的选择</th><th>代价</th></tr></thead>
+      <tbody>
+        <tr><td><strong>进入模式</strong></td><td>轻资产品牌授权，让渡实际控制权换取速度</td><td>总部与一线经营者缺少稳固信任机制，失控后只能靠诉讼 + 断供</td></tr>
+        <tr><td><strong>合规节奏</strong></td><td>先开店、后备案（美国特许经营备案晚于首店近 2 年）</td><td>"先上车后补票"在成熟法域极易被反噬</td></tr>
+        <tr><td><strong>股权设计</strong></td><td>比例剧烈波动（35% → 19.9% → 要求 70%）</td><td>合作方预期不稳定，谈判破裂即走向对抗</td></tr>
+        <tr><td><strong>合同约束</strong></td><td>未能有效约束合作方扩张行为</td><td>合作方另设公司时，除切断供应链、诉诸法院外缺乏制衡手段</td></tr>
+        <tr><td><strong>供应链</strong></td><td>"跨境 + 本地"混合</td><td>断供虽是武器，但也直接导致门店停业、消费者权益受损</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>对比参照</strong>：喜茶、霸王茶姬走的是<strong>合资或直营模式</strong>，品牌方牢牢把控当地门店经营权——速度慢，但控制权清晰。茉莉奶白用品牌换速度，短期跑得快，长期治理成本更高。这正是澎湃新闻评论所指出的："<strong>轻资产授权换来了扩张速度，却让品牌方和一线经营者之间缺少了一层足够稳固的信任机制。</strong>"</p>
+</section>
+
+<!-- LV 商标案 -->
+<section>
+  <h2>五、国内：LV 商标侵权案</h2>
+  <p class="sub">一场"自己在国内侵权、在国外维权"的尴尬处境。</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-date">2023 年起</div>
+      <div class="tl-body">品牌自 2023 年起多次申请四叶花卉图形商标。中国商标网显示，2024 年 3 月申请时因与 LV 在先商标构成近似<strong>被驳回，复审再次被驳回</strong>，国知局明确指出"易导致相关公众混淆误认"。仅注册成功了含"茉莉奶白"中文的商标（第 43 类）。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2024 年下半年</div>
+      <div class="tl-body">品牌视觉从"汉字 + 茉莉花苞"逐步更换为一枚<strong>黑色四叶花卉图案</strong>，与 LV 经典老花纹样高度近似——在已知风险的情况下仍将图形落地到全线经营场景。</div>
+    </div>
+    <div class="tl-item bad">
+      <div class="tl-date">2026 年 7 月 2 日</div>
+      <div class="tl-body"><strong>江苏省苏州市中级人民法院一审判决</strong>：认定侵害 LV 旗下 <strong>7 枚</strong>四叶花卉图形注册商标专用权，判令立即停止侵权，<strong>赔偿经济损失及合理开支合计 1,030 万元</strong>，并在官网、微博、微信公众号、小程序、小红书、抖音六大平台首页刊登声明消除影响；案件受理费等相关费用约 29.58 万元由茉莉奶白方承担。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">判决后</div>
+      <div class="tl-body">小程序等平台 Logo 由黑色更换为<strong>彩色渐变</strong>；顺势推出<strong>"宝相花"</strong>概念，将中国传统纹样与现代设计结合，把纠纷转化为"东方美学归属"的讨论。创始人张伯丞表示将上诉。</div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="t">判决书中两个关键认定</div>
+    <ul style="margin-bottom:0">
+      <li>法院认定<strong>侵权标识产品占比约 35%</strong>，侵权持续时间长、范围广、获利巨大。</li>
+      <li>判决书<strong>明确提及"茉莉奶白 2025 年营收约 40 亿元"，并以此为基础计算侵权获利</strong>——门店体量为赔偿裁量提供了可量化基础。</li>
+    </ul>
+  </div>
+  <p><strong>连锁影响</strong>：若二审维持原判，全国超 2,500 家门店的门头装潢、产品包装、杯套、周边物料及线上传播素材均需更换，成本目前无法估算。法律端将留下司法记录，后续同类侵权可能触发惩罚性赔偿；品牌端可能面临加盟商流失与消费者信任冲击。</p>
+</section>
+
+<!-- 加盟商与食安 -->
+<section>
+  <h2>六、加盟商生态与食安问题</h2>
+
+  <div class="callout warn">
+    <div class="t">三笔对不上的账</div>
+    <ul style="margin-bottom:0">
+      <li><strong>投入</strong>：招商手册写"前期总投资不含租金 40 万"，加盟商实付普遍至少 60 万（高租金城市 70–80 万）。</li>
+      <li><strong>回本</strong>：理想模型写毛利率 65%、年营业额 300 万、月盈利约 5 万、1–1.5 年回本；实际普遍被拖到 <strong>24 个月以上</strong>。</li>
+      <li><strong>退出</strong>：济南万象城标杆店（2024 年 5 月开业，曾排队一小时以上）2026 年 8 月关闭，原址换成韩国酸奶冰淇淋品牌；有加盟商 60 万建店、<strong>20 万转让</strong>离场。</li>
+    </ul>
+  </div>
+
+  <p>另一个被反复诟病的问题是<strong>没有区域保护条款</strong>——总部可以在现有门店 50 米外再开一家。区域保护本是加盟行业最基本的信任契约，它的缺席让加盟商活在"下一家新店随时可能开在楼下"的不确定性里。有加盟商直言"客流被邻近新店分流是家常便饭"。</p>
+
+  <h3>食安投诉</h3>
+  <ul>
+    <li>2025 年 3 月：因食安问题引发争议，发布道歉声明并对涉事门店闭店整改。</li>
+    <li>2026 年 3 月 22 日：上海顾客在产品中喝出<strong>完整透明塑料袋</strong>（袋上还有产品标签），品牌次日致歉，称系门店操作疏忽。</li>
+    <li>2026 年夏：连续出现食安事件——消费者喝出霉变异物；有门店把别人退单的小票直接放进杯子里做新饮品。</li>
+    <li>黑猫投诉平台：截至 2026 年 9 月累计 <strong>613 条</strong>投诉（近 30 天 32 条），主要为食品异物与服务态度。</li>
+  </ul>
+
+  <div class="callout note-box">
+    <div class="t">一个值得注意的连锁反应</div>
+    <p style="margin:0">海外纠纷消耗的是总部的现金流和管理精力——本该反哺国内供应链和单店支持的资源。澎湃新闻的追问很尖锐："<strong>加盟商交的管理费，会不会有一部分被拿去填补海外的窟窿？</strong>"这是总部需要给出交代的问题。</p>
+  </div>
+</section>
+
+<!-- 判断 -->
+<section>
+  <h2>七、风险清单与判断</h2>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>风险项</th><th>状态</th><th>影响评估</th></tr></thead>
+      <tbody>
+        <tr><td>LV 商标二审</td><td><span class="tag red">进行中</span></td><td>若维持原判：1,030 万赔偿 + 2,500+ 门店视觉更换成本（未估）+ 品牌信用受损</td></tr>
+        <tr><td>美国诉讼</td><td><span class="tag red">进行中</span></td><td>索赔 500 万美元；美国门店从 20+ 收缩至 2 家；北美 80–100 店目标已不可能达成</td></tr>
+        <tr><td>英国房东纠纷</td><td><span class="tag red">已发生</span></td><td>仅涉 2 家门店，直接损失有限，但属地关系管理能力受质疑</td></tr>
+        <tr><td>加盟商流失</td><td><span class="tag red">已显现</span></td><td>首批加盟商开始转让离场；无区域保护是招商的长期隐患</td></tr>
+        <tr><td>食安口碑</td><td><span class="tag red">持续</span></td><td>600+ 条投诉，高速扩张下品控压力会继续加大</td></tr>
+        <tr><td>单店模型</td><td><span class="tag">观察</span></td><td>立秋店均 2.76 万杯表现仍强，但行业整体单店承压，高增长能否持续待验</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>我的判断</h3>
+  <ul>
+    <li><strong>基本盘是健康的。</strong>2026H1 GMV 35.54 亿、同比 +73.48%，在行业普遍降速（头部合计 +9%）的背景下，这个增速本身就是稀缺资产。花香茶赛道的卡位、供应链的投入、品牌声量的积累都是真实壁垒，不是虚火。</li>
+    <li><strong>但"速度优先"正在集中收账单。</strong>LV 案、美国纠纷、英国房东冲突、加盟商离场、食安投诉——这五件事都指向同一个根因：扩张节奏跑在了制度建设前面。品牌曾用两年时间谨慎打磨单店模型，现在需要用同样的耐心修补规模背后的治理漏洞。</li>
+    <li><strong>出海需要换模式，不是换市场。</strong>品牌已表态"美国仍是战略重心，下半年将在纽约落地新直营门店"——从授权转向直营/合资是正确方向，但也意味着投入更大、速度更慢。对比霸王茶姬在新加坡加盟失控后转直营、喜茶坚持直营，行业共识正在收敛：<strong>海外核心市场必须自己控盘</strong>。</li>
+    <li><strong>真正的考验在 2027 年。</strong>当 2,500 家门店的基数效应消退、GMV 增速自然回落至行业常态，茉莉奶白能否靠单店效率而非开店数量维持增长，才是决定它属于"黑马"还是"下一个奈雪"的分水岭。</li>
+  </ul>
+
+  <div class="callout">
+    <div class="t">一句话总结</div>
+    <p style="margin:0">茉莉奶白用 6 年证明了<strong>细分品类可以跑出规模</strong>，也用一个夏天证明了<strong>规模不能替代治理</strong>。它现在的处境不是"不行了"，而是"长大了但还没长结实"——GMV 曲线和风控能力之间出现了一道明显的缺口，补上这个缺口，比再开 1,000 家店更重要。</p>
+  </div>
+</section>
+
+<div class="disc">
+  <strong>数据说明</strong><br>
+  1. 茉莉奶白为非上市公司，财务数据来自媒体报道、法院判决书与品牌官方披露，未经审计。2025 年营收约 40 亿元一值源自苏州中院一审判决书的明确认定，相对可靠；2026H1 GMV 35.54 亿元为品牌方口径（全渠道 GMV，非营业收入，两者不可等同）。<br>
+  2. 门店数存在多口径：窄门餐眼国内 2,347 家（2026-05-13）；红餐全国 2,579 家、覆盖 29 省 286 城（2026-06）；品牌官方全球 2,400+（2026-05）、2,500+（2026-06）。差异源于统计时点与国内外口径。<br>
+  3. 美国诉讼信息基于纽约南区联邦法院公开案件记录及双方公开声明，案件截至 2026 年 9 月仍在推进，最终责任认定以判决为准。品牌方与合作方各执一词，本报告并列呈现双方主张，不预设立场。<br>
+  4. 部分海外市场（加拿大、澳大利亚、泰国、印尼）门店数未单独披露，报告中以"—"标注。
+</div>
+
+<footer>
+  报告生成：2026 年 10 月 ｜ 数据截止：2026 年 9 月<br>
+  主要来源：南方日报、澎湃新闻、央视网财经、光明网、中国新闻网、中国日报网、中国经济新闻网、财经天下、山东商报、红餐大数据、窄门餐眼、壹览商业、品牌官网与官方公告、纽约南区联邦法院公开案件信息。
+</footer>
+
+</div>
+</body>
+</html>
