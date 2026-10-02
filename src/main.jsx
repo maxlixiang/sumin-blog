@@ -3,7 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './styles.css'
 import './footer.css'
 
-const Markdown = lazy(() => import('react-markdown'))
+const Markdown = lazy(() => import('./ArticleMarkdown.jsx'))
+const markdownPreview = import.meta.env.DEV ? {
+  id: 'markdown-preview', title: '增强 Markdown 排版预览', category: '本地预览',
+  date: '2026.10.02', content: '/docs/markdown-example.md',
+} : null
 
 function readRoute() {
   if (window.location.pathname === '/articles') return { name: 'archive' }
@@ -296,7 +300,9 @@ function App() {
       .catch(() => setArticles([]))
   }, [])
 
-  const activeArticle = route.name === 'article' ? articles.find(({ id }) => id === route.articleId) : null
+  const activeArticle = route.name === 'article'
+    ? (markdownPreview?.id === route.articleId ? markdownPreview : articles.find(({ id }) => id === route.articleId))
+    : null
   useEffect(() => {
     const pageTitle = activeArticle?.title ?? (route.name === 'archive' ? '全部文章' : route.name === 'not-found' ? '页面未找到' : '')
     document.title = pageTitle ? `${pageTitle}｜大米的小站` : '大米的小站'
