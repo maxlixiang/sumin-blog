@@ -7,8 +7,14 @@ export function runReport(config) {
     scheduled = false
     const body = document.body
     const style = getComputedStyle(body)
+    const videos = [...document.querySelectorAll('.dami-video-slot')].map((el) => {
+      const rect = el.getBoundingClientRect()
+      const desiredHeight = Math.ceil(Math.max(200, rect.width * 9 / 16) + 172)
+      if (el.style.height !== `${desiredHeight}px`) el.style.height = `${desiredHeight}px`
+      return { index: Number(el.dataset.videoIndex), top: rect.top + scrollY, left: rect.left, width: rect.width, height: desiredHeight }
+    })
     const height = Math.ceil(body.getBoundingClientRect().height + parseFloat(style.marginTop || 0) + parseFloat(style.marginBottom || 0))
-    notify('height', { height: Math.max(200, height) })
+    notify('height', { height: Math.max(200, height), videos })
   }
   const schedule = () => {
     if (!scheduled) { scheduled = true; requestAnimationFrame(sendHeight) }

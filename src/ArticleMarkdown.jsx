@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkDirective from 'remark-directive'
+import VideoEmbed from './VideoEmbed'
 import './article-markdown.css'
 
 const tones = new Set(['note', 'warning', 'success', 'danger'])
@@ -14,7 +15,9 @@ function articleDirectives() {
   return (tree) => {
     function walk(node) {
       const attrs = node.attributes ?? {}
-      if (node.type === 'containerDirective' && Object.hasOwn(containers, node.name)) {
+      if (node.type === 'leafDirective' && node.name === 'video') {
+        node.data = { hName: 'video-card', hProperties: { 'data-video-url': attrs.url, 'data-video-title': attrs.title, 'data-video-start': attrs.start } }
+      } else if (node.type === 'containerDirective' && Object.hasOwn(containers, node.name)) {
         const tone = tones.has(attrs.type) ? attrs.type : 'note'
         node.data = {
           hName: containers[node.name],
@@ -38,6 +41,7 @@ function articleDirectives() {
 
 const plugins = [remarkGfm, remarkDirective, articleDirectives]
 const components = {
+  'video-card': ({ node }) => <VideoEmbed url={node.properties['data-video-url']} title={node.properties['data-video-title']} start={node.properties['data-video-start']} />,
   table: ({ children }) => <div className="md-table-scroll" tabIndex={0} role="region" aria-label="表格，可横向滚动"><table>{children}</table></div>,
   img: ({ src, alt, title }) => <img src={src} alt={alt ?? ''} title={title} loading="lazy" decoding="async" />,
   // A figure's final italic paragraph is the authored image caption.

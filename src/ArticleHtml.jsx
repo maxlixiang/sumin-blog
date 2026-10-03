@@ -3,6 +3,8 @@ import DOMPurify from 'dompurify'
 import echartsAsset from 'echarts/dist/echarts.min.js?url'
 import { runReport } from './html-report-runtime'
 import './article-html.css'
+import VideoEmbed from './VideoEmbed'
+import { parseVideoSource } from './video-source'
 
 const frameStyles = `
 html,body { min-height:0!important; height:auto!important; max-width:100%!important; }
@@ -34,6 +36,21 @@ function createDocument(source, contentUrl, token, charts) {
   const doc = new DOMParser().parseFromString(clean, 'text/html')
   const nonce = crypto.randomUUID().replaceAll('-', '')
   const baseUrl = new URL(contentUrl, window.location.href)
+  const videos = []
+  for (const el of doc.querySelectorAll('div[data-video-url]')) {
+    const spec = { url: el.dataset.videoUrl, title: el.dataset.videoTitle || '引用视频', start: el.dataset.videoStart }
+    const slot = doc.createElement('div')
+    if (!parseVideoSource(spec.url, spec.start)) {
+      slot.textContent = '视频地址无效或平台暂不支持。'
+    } else {
+      slot.className = 'dami-video-slot'
+      slot.dataset.videoIndex = String(videos.length)
+      slot.textContent = '视频引用：请使用下方播放器或原站链接观看。'
+      slot.style.cssText = 'position:relative;min-height:372px;margin:24px 0;'
+      videos.push(spec)
+    }
+    el.replaceWith(slot)
+  }
   // Rebase local images/CSS assets to the source file rather than the article route.
   for (const el of doc.querySelectorAll('[src],a[href]')) {
     const attr = el.hasAttribute('src') ? 'src' : 'href'
@@ -71,24 +88,27 @@ function createDocument(source, contentUrl, token, charts) {
   script.setAttribute('nonce', nonce)
   script.textContent = `(${runReport.toString()})(${serialize({ token, charts, nonce, echartsUrl: new URL(echartsAsset, window.location.href).href })});`
   doc.body.append(script)
-  return '<!doctype html>\n' + doc.documentElement.outerHTML
+  return { html: '<!doctype html>\n' + doc.documentElement.outerHTML, videos }
 }
 
 export default function ArticleHtml({ children, contentUrl, title, charts = emptyCharts, warning = '' }) {
   const frame = useRef(null)
   const [height, setHeight] = useState(600)
   const [chartError, setChartError] = useState('')
+  const [videoRects, setVideoRects] = useState([])
   const token = useMemo(() => crypto.randomUUID(), [children, contentUrl, charts])
   const source = useMemo(() => createDocument(children, contentUrl, token, charts), [children, contentUrl, token, charts])
 
   useEffect(() => {
     setHeight(600)
     setChartError('')
+    setVideoRects([])
     const receive = (event) => {
       const data = event.data
       if (event.source !== frame.current?.contentWindow || data?.channel !== 'dami-report' || data.token !== token) return
       if (data.type === 'height' && Number.isFinite(data.height)) {
         setHeight(Math.min(200000, Math.max(200, data.height)))
+        if (Array.isArray(data.videos)) setVideoRects(data.videos.filter((rect) => Number.isInteger(rect.index) && rect.index >= 0 && rect.index < source.videos.length && ['top', 'left', 'width', 'height'].every((key) => Number.isFinite(rect[key]) && rect[key] >= 0 && rect[key] < 200000)))
       } else if (data.type === 'anchor' && Number.isFinite(data.top)) {
         const top = frame.current.getBoundingClientRect().top + window.scrollY + data.top - 100
         window.scrollTo({ top: Math.max(0, top), behavior: 'auto' })
@@ -96,10 +116,13 @@ export default function ArticleHtml({ children, contentUrl, title, charts = empt
     }
     window.addEventListener('message', receive)
     return () => window.removeEventListener('message', receive)
-  }, [token])
+  }, [token, source])
 
   return <div className="html-report">
     {chartError || warning ? <p className="reader-status" role="status">{chartError || warning}</p> : null}
-    <iframe ref={frame} title={`${title}：专题正文`} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerPolicy="no-referrer" srcDoc={source} style={{ height }} />
+    <div style={{ position: 'relative' }}>
+      <iframe ref={frame} title={`${title}：专题正文`} sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerPolicy="no-referrer" srcDoc={source.html} style={{ height }} />
+      {videoRects.map((rect) => <div className="html-video-overlay" key={rect.index} style={{ top: rect.top, left: rect.left, width: rect.width, height: rect.height }}><VideoEmbed {...source.videos[rect.index]} /></div>)}
+    </div>
   </div>
 }

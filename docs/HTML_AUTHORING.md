@@ -93,3 +93,5 @@
 ECharts 资源由项目打包并从网站本身加载，不依赖外部 CDN。只有 HTML 专题需要它，首页和 Markdown 文章不请求图表运行资源。
 
 这里支持静态 HTML 排版与受控 ECharts 配置；需要登录、表单、任意脚本或其他应用交互的网页，应作为独立应用处理。
+
+YouTube／B站视频使用 `div[data-video-url]` 标记，由网站受控播放器渲染，具体见 `docs/VIDEO_AUTHORING.md`。原稿中的任意 iframe 仍不会执行。

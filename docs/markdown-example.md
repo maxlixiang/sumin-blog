@@ -1,5 +1,13 @@
 # 增强 Markdown 排版预览
 
+## 视频引用
+
+下面仅为平台官方示例链接，点击“加载视频”才连接平台；演示不作为本站文章观点。
+
+::video{url="https://www.youtube.com/watch?v=M7lc1UVf-VE" title="YouTube 播放器演示"}
+
+::video{url="https://www.bilibili.com/video/BV1B7411m7LV/" title="B站外链播放器示例"}
+
 以下为排版示例，数字不代表真实调研结论。这份页面只用于本地预览，不会加入文章列表。
 
 ## 数据卡片

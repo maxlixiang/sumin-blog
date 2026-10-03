@@ -97,4 +97,4 @@
 
 扩展使用 `remark-gfm` 与 `remark-directive`，文章渲染器仍按需加载。扩展仅识别本文列出的名称和 `type`，不开放任意 HTML、脚本、样式或事件属性。普通引用、列表和链接的写法不变。
 
-这一层适合静态调研文章。动态 ECharts、合并单元格和完整专题布局请使用 HTML 格式，具体见 `docs/HTML_AUTHORING.md`。
+这一层适合静态调研文章，也支持受控的视频引用，具体见 `docs/VIDEO_AUTHORING.md`。动态 ECharts、合并单元格和完整专题布局请使用 HTML 格式，具体见 `docs/HTML_AUTHORING.md`。
