@@ -24,6 +24,16 @@ function articleDirectives() {
           hProperties: { className: `md-${node.name}${node.name === 'callout' ? ` md-${tone}` : ''}` },
         }
         if (node.name === 'figure') {
+          if (attrs.type === 'cover') {
+            node.data.hProperties.className += ' md-cover'
+            const markCover = (child) => {
+              if (child.type === 'image') {
+                child.data = { ...child.data, hProperties: { ...child.data?.hProperties, width: 1200, height: 675, 'data-cover': 'true' } }
+              }
+              child.children?.forEach(markCover)
+            }
+            node.children?.forEach(markCover)
+          }
           const caption = node.children?.at(-1)
           if (caption?.type === 'paragraph' && caption.children?.length === 1 && caption.children[0].type === 'emphasis') {
             caption.data = { hName: 'figcaption' }
@@ -43,9 +53,9 @@ const plugins = [remarkGfm, remarkDirective, articleDirectives]
 const components = {
   'video-card': ({ node }) => <VideoEmbed url={node.properties['data-video-url']} title={node.properties['data-video-title']} start={node.properties['data-video-start']} />,
   table: ({ children }) => <div className="md-table-scroll" tabIndex={0} role="region" aria-label="表格，可横向滚动"><table>{children}</table></div>,
-  img: ({ src, alt, title }) => <img src={src} alt={alt ?? ''} title={title} loading="lazy" decoding="async" />,
+  img: ({ src, alt, title, width, height, node }) => <img src={src} alt={alt ?? ''} title={title} width={width} height={height} loading={node.properties['data-cover'] === 'true' ? 'eager' : 'lazy'} decoding="async" />,
   // A figure's final italic paragraph is the authored image caption.
-  figure: ({ children }) => <figure className="md-figure">{children}</figure>,
+  figure: ({ children, className }) => <figure className={className ?? 'md-figure'}>{children}</figure>,
 }
 
 export default function ArticleMarkdown({ children }) {

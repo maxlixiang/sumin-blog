@@ -34,6 +34,7 @@ Vercel 可自动识别 Vite 项目并使用 `npm run build` 构建。
 ## 内容与交互支持
 
 - [增强 Markdown](docs/MARKDOWN_AUTHORING.md)：图片、图注、表格、提示框、指标与时间线。
+- 可选文章封面：`:::figure{type="cover"}` 支持 16:9 WebP、尺寸预留和首图立即加载；资源按文章存入 `public/article-assets/<文章ID>/`。无图文章布局不变，不自动为旧文配图。
 - [HTML 专题与 ECharts](docs/HTML_AUTHORING.md)：隔离排版、受控动态图表，不执行原稿脚本。
 - [文章来源](docs/ARTICLE_SOURCES.md)：原创／转载／AI 共研，与主题分类分开。
 - [视频引用](docs/VIDEO_AUTHORING.md)：YouTube／B站，点击后加载官方播放器、不自动播放，始终保留原站链接。Markdown 与 HTML 使用同一套卡片；不开放任意 iframe，不承诺登录或会员画质。
