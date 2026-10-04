@@ -5,7 +5,7 @@
     "category": "涉外法律",
     "title": "涉外律师：闯劲大于精英感",
     "excerpt": "从企业出海现场、主动寻找业务与复杂海外环境，讨论涉外律师需要的判断力和行动力。",
-    "content": "/articles/foreign-lawyer-drive-over-elitism.md"
+    "content": "/article-data/foreign-lawyer-drive-over-elitism.md"
   },
   {
     "id": "foreign-lawyer-business-designer",
@@ -14,7 +14,7 @@
     "sourceType": "original",
     "title": "涉外律师如何成为出色的商业设计师",
     "excerpt": "从投资目的地、进入模式到风险预案，讨论涉外律师如何参与企业出海的商业设计。",
-    "content": "/articles/foreign-lawyer-business-designer.md"
+    "content": "/article-data/foreign-lawyer-business-designer.md"
   },
   {
     "id": "molly-tea-overseas-research",
@@ -24,7 +24,7 @@
     "title": "茉莉奶白品牌调研：出海专题（截至2026年9月）",
     "excerpt": "梳理品牌发展、产品布局、海外市场与出海风险。",
     "format": "html",
-    "content": "/articles/molly-tea-overseas-research.html"
+    "content": "/article-data/molly-tea-overseas-research.html"
   },
   {
     "id": "molly-tea-brand-report",
@@ -34,8 +34,8 @@
     "title": "茉莉奶白品牌调研报告：聚焦出海战略",
     "excerpt": "围绕品牌定位、海外布局、商业模式与竞争挑战的专题报告。",
     "format": "html",
-    "content": "/articles/molly-tea-brand-report.html",
-    "charts": "/articles/molly-tea-brand-report.charts.json"
+    "content": "/article-data/molly-tea-brand-report.html",
+    "charts": "/article-data/molly-tea-brand-report.charts.json"
   },
   {
     "id": "better-food-not-more-calories",
@@ -45,7 +45,7 @@
     "aiAssisted": true,
     "title": "我们已经不缺热量了，缺的是更好的食物",
     "excerpt": "从高钠低钾、膳食纤维不足，到外卖时代的饮食结构失衡。",
-    "content": "/articles/better-food-not-more-calories.md"
+    "content": "/article-data/better-food-not-more-calories.md"
   },
   {
     "id": "legal-to-business-management",
@@ -54,7 +54,7 @@
     "sourceType": "ai-research",
     "title": "从法律专业走向经营管理：我的18—24个月能力训练计划",
     "excerpt": "以法律为专业基本盘，用18—24个月训练业务、财务、决策、执行与组织协作能力。",
-    "content": "/articles/legal-to-business-management.md"
+    "content": "/article-data/legal-to-business-management.md"
   },
   {
     "id": "stanford-legal-engineering",
@@ -63,7 +63,7 @@
     "sourceType": "original",
     "title": "从斯坦福法律工程项目，看 AI 时代律师的三种角色",
     "excerpt": "从个人使用 AI 到团队工作流与组织治理，理解法律工程带来的新角色。",
-    "content": "/articles/stanford-legal-engineering.md"
+    "content": "/article-data/stanford-legal-engineering.md"
   },
   {
     "id": "ai-change-and-perspective",
@@ -72,7 +72,7 @@
     "sourceType": "original",
     "title": "人工智能是变局，还是格局？",
     "excerpt": "从法律服务生产、企业出海需求与跨境规则变化，理解 AI 时代律师价值如何重新定位。",
-    "content": "/articles/ai-change-and-perspective.md"
+    "content": "/article-data/ai-change-and-perspective.md"
   },
   {
     "id": "foreign-lawyer-paths",
@@ -81,7 +81,7 @@
     "sourceType": "original",
     "title": "国内涉外律师行业现状及两种发展方向",
     "excerpt": "从真实业务、入行门槛、案源逻辑与细分赛道，拆解涉外律师职业选择。",
-    "content": "/articles/foreign-lawyer-paths.md"
+    "content": "/article-data/foreign-lawyer-paths.md"
   },
   {
     "id": "ip-and-ai",
@@ -90,7 +90,7 @@
     "sourceType": "original",
     "title": "知识产权与人工智能",
     "excerpt": "AI 如何重构知识产权规则，并为涉外法律人才带来新的职业窗口。",
-    "content": "/articles/ip-and-ai.md"
+    "content": "/article-data/ip-and-ai.md"
   },
   {
     "id": "foreign-lawyer-upgrade",
@@ -99,6 +99,6 @@
     "sourceType": "original",
     "title": "涉外律师认知升级",
     "excerpt": "从客户价值、产业理解与规则变化，重新审视涉外法律的核心能力。",
-    "content": "/articles/foreign-lawyer-upgrade.md"
+    "content": "/article-data/foreign-lawyer-upgrade.md"
   }
 ]

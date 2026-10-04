@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:video": "node --test tests/video-source.test.js"
+    "test:video": "node --test tests/video-source.test.js",
+    "test:articles": "node --test tests/article-data.test.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",

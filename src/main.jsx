@@ -17,7 +17,7 @@ const htmlPreview = import.meta.env.DEV ? {
 } : null
 
 function readRoute() {
-  if (window.location.pathname === '/articles') return { name: 'archive' }
+  if (/^\/articles\/?$/.test(window.location.pathname)) return { name: 'archive' }
   const match = window.location.pathname.match(/^\/articles\/([^/]+)\/?$/)
   if (!match) return { name: 'home' }
   try {
@@ -365,7 +365,7 @@ function App() {
   const [activeSection, setActiveSection] = useScrollSpy(route.name)
   useSectionReveal(route.name)
   useEffect(() => {
-    fetch('/articles/index.json')
+    fetch('/article-data/index.json')
       .then((response) => response.ok ? response.json() : [])
       .then(setArticles)
       .catch(() => setArticles([]))

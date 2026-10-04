@@ -1,6 +1,6 @@
 # 网站增强 Markdown 写作说明
 
-普通文章继续使用 `public/articles/*.md` 与现有索引，无需增加格式字段。保留一个一级标题，与索引标题一致。现有 Markdown 文章自动获得表格、图片、脚注和任务清单支持。
+普通文章使用 `public/article-data/*.md` 与 `public/article-data/index.json`，无需增加格式字段。保留一个一级标题，与索引标题一致。现有 Markdown 文章自动获得表格、图片、脚注和任务清单支持。
 
 本地启动 `npm run dev` 后，访问 `/articles/markdown-preview` 查看全部样式。预览使用 `docs/markdown-example.md`，不会进入文章列表，生产环境不提供这个预览页面。
 

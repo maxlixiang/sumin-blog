@@ -6,9 +6,9 @@
 
 ## 添加 HTML 专题
 
-将 UTF-8 HTML 文件放入 `public/articles/`。支持含 `html/head/body` 的完整文档，也支持正文片段。完整报告保留自身页头与内联 CSS，显示在与网站隔离的 iframe 中；网站导航和翻页位于报告外面。
+将 UTF-8 HTML 文件放入 `public/article-data/`。支持含 `html/head/body` 的完整文档，也支持正文片段。完整报告保留自身页头与内联 CSS，显示在与网站隔离的 iframe 中；网站导航和翻页位于报告外面。
 
-在 `public/articles/index.json` 加入：
+在 `public/article-data/index.json` 加入：
 
 ```json
 {
@@ -18,8 +18,8 @@
   "title": "专题报告标题",
   "excerpt": "一句话摘要。",
   "format": "html",
-  "content": "/articles/example-report.html",
-  "charts": "/articles/example-report.charts.json"
+  "content": "/article-data/example-report.html",
+  "charts": "/article-data/example-report.charts.json"
 }
 ```
 

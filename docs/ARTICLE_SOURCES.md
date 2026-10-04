@@ -2,7 +2,7 @@
 
 主题分类 `category`（例如人工智能、生活思考）与文章来源 `sourceType` 相互独立。来源显示在首页文章行、全部文章页与阅读页；全部文章页可按来源筛选。
 
-在 `public/articles/index.json` 的文章条目中添加：
+在 `public/article-data/index.json` 的文章条目中添加：
 
 ```json
 "sourceType": "original"

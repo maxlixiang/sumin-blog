@@ -19,15 +19,17 @@ Vercel 可自动识别 Vite 项目并使用 `npm run build` 构建。
 
 ## 发布新文章
 
-文章正文放在 `public/articles/`，使用 UTF-8 编码的 Markdown 或 HTML。纯文字、图片和常规表格可以用 Markdown；专题排版和动态图表可以用 HTML。
+文章正文放在 `public/article-data/`，使用 UTF-8 编码的 Markdown 或 HTML。纯文字、图片和常规表格可以用 Markdown；专题排版和动态图表可以用 HTML。
 
 新增文章时：
 
-1. 在 `public/articles/` 新建文件，例如 `my-new-article.md`。
-2. 在 `public/articles/index.json` 顶部添加一条文章信息，填写 `id`、`date`、`category`、`title`、`excerpt` 和 `content`。其中 `content` 填写 `/articles/my-new-article.md`。
+1. 在 `public/article-data/` 新建文件，例如 `my-new-article.md`。
+2. 在 `public/article-data/index.json` 顶部添加一条文章信息，填写 `id`、`date`、`category`、`title`、`excerpt` 和 `content`。其中 `content` 填写 `/article-data/my-new-article.md`。
 3. 提交并推送到 GitHub；Vercel 会自动发布。
 
 首页会展示最新 3 篇文章，“查看全部”进入 `/articles`；每篇文章的 `id` 会生成独立地址，例如 `/articles/my-new-article`。
+
+页面路由 `/articles` 与 `/articles/<文章ID>` 专用于阅读页面，不能再放入同名静态目录。目录清单、正文与图表数据使用 `/article-data/`；封面仍使用 `/article-assets/`。迁移只改变资源地址，不改变正文、日期、分类或阅读链接。发布前应检查 `/articles`、`/articles/` 直接打开及刷新，并分别检查 Markdown 与 HTML 阅读页。
 
 正文可以用 `# 标题` 开头，但网站阅读页已经显示文章标题，因此该一级标题不会重复显示。
 
@@ -43,3 +45,5 @@ Vercel 可自动识别 Vite 项目并使用 `npm run build` 构建。
 现成终稿可以直接发布，不必调用文章编辑 Skill；只有要求核查、润色或改写时才进入编辑工作流。
 
 视频能力更新于 2026-10-03。运行 `npm run test:video` 检查视频链接规则；运行 `npm run build` 检查生产构建。开发预览 `/articles/markdown-preview` 与 `/articles/html-preview` 包含视频示例，不进入正式文章列表。
+
+运行 `npm run test:articles` 检查数据目录与页面路由隔离、正文和图表资源，以及目录字段。此检查不替代部署后的直接打开与刷新测试。
