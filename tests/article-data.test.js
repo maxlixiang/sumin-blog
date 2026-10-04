@@ -5,6 +5,12 @@ import { readFileSync, existsSync } from 'node:fs'
 const root = new URL('../', import.meta.url)
 const catalog = JSON.parse(readFileSync(new URL('public/article-data/index.json', root), 'utf8'))
 
+test('Vercel canonicalizes trailing slashes and serves the SPA', () => {
+  const config = JSON.parse(readFileSync(new URL('vercel.json', root), 'utf8'))
+  assert.equal(config.trailingSlash, false)
+  assert(config.rewrites.some(route => route.source === '/articles/:path*' && route.destination === '/index.html'))
+})
+
 test('article data does not occupy the page route directory', () => {
   assert.equal(existsSync(new URL('public/articles', root)), false)
   assert(catalog.length > 0)
