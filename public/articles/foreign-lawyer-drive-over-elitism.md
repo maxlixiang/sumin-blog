@@ -3,7 +3,7 @@
 :::figure{type="cover"}
 ![一位背向镜头的商务访客在安全观景区观察港口、集装箱与物流作业](/article-assets/foreign-lawyer-drive-over-elitism/cover.webp)
 
-*AI 生成的主题示意图。*
+*图片由AI生成*
 :::
 
 涉外律师能成一番事业的，必定是闯劲大过精英感。

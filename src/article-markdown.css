@@ -10,6 +10,7 @@
 .reader-content .md-cover img { width:100%; aspect-ratio:16 / 9; object-fit:cover; }
 .reader-content .md-figure figcaption { color:var(--muted); text-align:center; font-size:.85em; line-height:1.6; }
 .reader-content .md-figure figcaption em { font-style:normal; }
+.reader-content .md-cover figcaption em { font-style:italic; }
 .reader-content .md-callout > p:first-child { font-weight:650; }
 .reader-content .md-callout { margin:1.5em 0; padding:18px 22px; border-left:3px solid var(--violet); border-radius:0 12px 12px 0; background:#f4f0ff; }
 .reader-content .md-callout > :last-child,.reader-content .md-panel > :last-child,.reader-content .md-metric > :last-child { margin-bottom:0; }

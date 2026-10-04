@@ -3,7 +3,7 @@
 :::figure{type="cover"}
 ![自然光下的工作桌上摆放着合同式资料、贸易路线示意与架构规划笔记](/article-assets/foreign-lawyer-business-designer/cover.webp)
 
-*AI 生成的主题示意图。*
+*图片由AI生成*
 :::
 
 企业出海最怕的不是赚不到钱，而是在错误的判断上持续投入。
