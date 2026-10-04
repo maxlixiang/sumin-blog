@@ -1,5 +1,11 @@
 # 我们已经不缺热量了，缺的是更好的食物
 
+:::figure{type="cover"}
+![窗边木桌上的家常餐盘，搭配土豆、鸡蛋、鱼和蔬菜，旁边放着酸奶、苹果和清水](/article-assets/better-food-not-more-calories/cover.webp)
+
+*图片由AI生成*
+:::
+
 > **从高钠低钾、膳食纤维不足，到外卖时代的饮食结构失衡**
 
 ---
