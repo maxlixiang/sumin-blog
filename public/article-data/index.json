@@ -1,5 +1,14 @@
 [
   {
+    "id": "workbuddy-legal-work",
+    "date": "2026.10.12",
+    "category": "人工智能",
+    "sourceType": "ai-research",
+    "title": "如何使用 WorkBuddy 辅助进行法务工作",
+    "excerpt": "从法律数据连接器、开源技能到复核流程，搭建辅助法务工作的 AI 工作台。",
+    "content": "/article-data/workbuddy-legal-work.md"
+  },
+  {
     "id": "foreign-lawyer-drive-over-elitism",
     "date": "2026.10.03",
     "category": "涉外法律",
